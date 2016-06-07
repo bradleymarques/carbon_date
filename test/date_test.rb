@@ -174,7 +174,7 @@ class DateTest < Minitest::Test
 
   # ==================== To Strings ====================
 
-  def test_it_can_be_converted_to_a_string_with_year_precision
+  def test_it_can_be_formatted_with_year_precision
     assert_equal '2016', CarbonDate::Date.new(year: 2016, precision: :year).to_s
     assert_equal '4600000', CarbonDate::Date.new(year: 4.6e6, precision: :year).to_s
     assert_equal '2000 BCE', CarbonDate::Date.new(year: -2000, precision: :year).to_s
@@ -186,6 +186,12 @@ class DateTest < Minitest::Test
     assert_equal "#{threshold + 1}", CarbonDate::Date.new(year: threshold + 1, precision: :year).to_s
   end
 
+  def test_it_can_be_formatted_with_month_precision
+    assert_equal "June 1945", CarbonDate::Date.new(year: 1945, month: 6, precision: :month).to_s
+    assert_equal "September 2016", CarbonDate::Date.new(year: 2016, month: 9, precision: :month).to_s
+    assert_equal "April 50 BCE", CarbonDate::Date.new(year: -50, month: 4, precision: :month).to_s
+    assert_equal "December CE 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
+  end
 
 
 

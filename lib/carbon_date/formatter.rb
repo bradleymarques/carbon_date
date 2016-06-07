@@ -8,6 +8,14 @@ module CarbonDate
     # The year in Common Era (CE) at which we can stop saying 'CE'
     CE_THRESHOLD = 500
 
+    ##
+    # Suffix to use for Before Common Era dates (quite often BCE or BC)
+    BCE_SUFFIX = 'BCE'
+
+    ##
+    # Prefix to use for Common Era dates (quite often CE or AD)
+    CE_PREFIX = 'CE'
+
     def date_to_string(date)
       precision = date.precision.fetch(:symbol, nil)
       case precision
@@ -28,7 +36,6 @@ module CarbonDate
       when :second then second(date)
       else raise StandardError.new("Unrecognized precision: #{precision}")
       end
-
     end
 
   end
@@ -38,11 +45,19 @@ module CarbonDate
     def year(date)
       y = date.year.abs.to_s
       if (date.year <= -1)
-        return y + ' BCE'
+        return [y, BCE_SUFFIX].join(' ')
       elsif (date.year <= CE_THRESHOLD)
-        return 'CE ' + y
+        return [CE_PREFIX, y].join(' ')
       end
       return y
+    end
+
+    def months
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    end
+
+    def month(date)
+      [months[date.month - 1], year(date)].join(' ')
     end
 
     def second(date)
