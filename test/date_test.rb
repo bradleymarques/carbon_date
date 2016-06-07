@@ -187,17 +187,29 @@ class DateTest < Minitest::Test
   end
 
   def test_it_can_be_formatted_with_month_precision
-    assert_equal "June 1945", CarbonDate::Date.new(year: 1945, month: 6, precision: :month).to_s
-    assert_equal "September 2016", CarbonDate::Date.new(year: 2016, month: 9, precision: :month).to_s
-    assert_equal "April 50 BCE", CarbonDate::Date.new(year: -50, month: 4, precision: :month).to_s
-    assert_equal "December CE 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
+    assert_equal "June, 1945", CarbonDate::Date.new(year: 1945, month: 6, precision: :month).to_s
+    assert_equal "September, 2016", CarbonDate::Date.new(year: 2016, month: 9, precision: :month).to_s
+    assert_equal "April, 50 BCE", CarbonDate::Date.new(year: -50, month: 4, precision: :month).to_s
+    assert_equal "December, CE 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
   end
 
   def test_it_can_be_formatted_with_day_precision
-    assert_equal "6 June 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
-    assert_equal "2 September 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
-    assert_equal "15 March 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
-    assert_equal "15 March CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
+    assert_equal "2 September, 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
+    assert_equal "15 March, 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "15 March, CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
+  end
+
+  def test_it_can_be_formatted_with_hour_precision
+    skip
+  end
+
+  def test_it_can_be_formatted_with_minute_precision
+    assert_equal "06:45 6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, precision: :minute).to_s
+    assert_equal "18:01 15 July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, precision: :minute).to_s
+    assert_equal "00:00 1 January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, precision: :minute).to_s
+    assert_equal "11:11 11 November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
+    assert_equal "11:11 11 November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
   end
 
 

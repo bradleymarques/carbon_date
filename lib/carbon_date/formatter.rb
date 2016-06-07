@@ -57,11 +57,20 @@ module CarbonDate
     end
 
     def month(date)
-      [months[date.month - 1], year(date)].join(' ')
+      [months[date.month - 1], year(date)].join(', ')
     end
 
     def day(date)
       [date.day.to_s, month(date)].join(' ')
+    end
+
+    def hour(date)
+      "THIS ONE IS TRICKY"
+    end
+
+    def minute(date)
+      time = [date.hour.to_s.rjust(2, '0'), date.minute.to_s.rjust(2, '0')].join(':')
+      [time, day(date)].join(' ')
     end
 
     def second(date)
