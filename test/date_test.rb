@@ -212,10 +212,12 @@ class DateTest < Minitest::Test
     assert_equal "11:11 11 November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
   end
 
-
-
   def test_it_can_be_converted_to_a_string_with_second_precision
-    skip
+    assert_equal "06:45:30 6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, second: 30, precision: :second).to_s
+    assert_equal "18:01:01 15 July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, second: 1, precision: :second).to_s
+    assert_equal "00:00:00 1 January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second).to_s
+    assert_equal "11:11:11 11 November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
+    assert_equal "11:11:11 11 November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
   end
 
   # TODO: More to_s tests

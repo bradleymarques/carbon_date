@@ -42,6 +42,8 @@ module CarbonDate
 
   class StandardFormatter < Formatter
 
+    private
+
     def year(date)
       y = date.year.abs.to_s
       if (date.year <= -1)
@@ -69,14 +71,18 @@ module CarbonDate
     end
 
     def minute(date)
-      time = [date.hour.to_s.rjust(2, '0'), date.minute.to_s.rjust(2, '0')].join(':')
+      time = [pad(date.hour.to_s), pad(date.minute.to_s)].join(':')
       [time, day(date)].join(' ')
     end
 
     def second(date)
-      "SOME SECONDS"
+      time = [pad(date.hour.to_s), pad(date.minute.to_s), pad(date.second.to_s)].join(':')
+      [time, day(date)].join(' ')
+    end
+
+    def pad(s)
+      s.rjust(2, '0')
     end
 
   end
-
 end
