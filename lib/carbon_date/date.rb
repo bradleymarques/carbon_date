@@ -23,11 +23,9 @@ module CarbonDate
       {symbol: :second, level: 14, name: 'second'}
     ]
 
-    include CarbonDate::Formatter
-
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
 
-    def initialize(year: 1988, month: 7, day: 11, hour: 6, minute: 43, second: 12, precision: :second)
+    def initialize(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second, formatter: StandardFormatter.new)
 
       @precision = PRECISION.find { |p| p[:symbol] == precision }
       raise ArgumentError.new "Invalid precision" unless @precision
@@ -64,8 +62,13 @@ module CarbonDate
         @second = second
       end
 
+      @formatter = formatter
+
     end
 
+    def to_s
+      @formatter.date_to_string(self)
+    end
 
   end
 

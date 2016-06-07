@@ -125,16 +125,6 @@ class DateTest < Minitest::Test
     assert_raises(ArgumentError) { CarbonDate::Date.new(year: 2016, precision: invalid_precision) }
   end
 
-  # ==================== Conversions and other initializations ====================
-
-  def test_it_can_be_converted_to_datetime_object
-    skip 'Not yet implemented'
-  end
-
-  def test_it_can_be_initialized_with_iso8601_timestamp
-    skip 'Not yet implemented'
-  end
-
   # ==================== Validations ====================
 
   def test_it_throws_an_error_if_invalid_month
@@ -160,14 +150,31 @@ class DateTest < Minitest::Test
     assert_raises(ArgumentError) { CarbonDate::Date.new(year: 2015, month: 2, day: 29, precision: :day)}
   end
 
+  def test_there_is_no_year_0
+    assert_raises (ArgumentError) { CarbonDate::Date.new(year: 0, precision: :year)}
+  end
+
   # TODO: Write tests to validate time
+
+  # ==================== Conversions and other initializations ====================
+
+  def test_it_can_be_converted_to_datetime_object
+    skip 'Not yet implemented'
+  end
+
+  def test_it_can_be_initialized_with_iso8601_timestamp
+    skip 'Not yet implemented'
+  end
 
   # ==================== To Strings ====================
 
-  def test_it_raises_error_if_trying_to_format_with_unrecognized_format
-    d = CarbonDate::Date.new()
-    assert_raises(ArgumentError) { d.to_s(:klingon_date_format) }
+  def test_it_can_be_converted_to_a_string_with_year_precision
+    assert_equal '2016', CarbonDate::Date(year: 2016, precision: :year)
+    assert_equal '4600000', CarbonDate::Date(year: 4.6e6, precision: :year)
+    assert_equal '2000 BCE', CarbonDate::Date(year: -2000, precision: :year)
+    assert_equal '0 BCE', CarbonDate::Date(year: 0, precision: :year)
   end
+
 
   def test_it_can_be_converted_to_a_string_with_second_precision
     date1 = CarbonDate::Date.new(year: 2016, month: 6, day: 6, hour: 8, minute: 46, second: 42, precision: :second)

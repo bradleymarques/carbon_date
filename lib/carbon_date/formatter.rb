@@ -1,51 +1,37 @@
 module CarbonDate
 
-  module Formatter
+  ##
+  # Responsible for formatting a CarbonDate::Date to a human-readable string
+  class Formatter
 
-    FORMAT = {
-      standard: {
-        name: 'standard',
-        full_date_format: '',
-        full_time_format: ''
-      }
-    }
-
-    def self.included(base)
-      base.extend(FormatterClassMethods)
-    end
-
-    module FormatterClassMethods
-      # Put any class methods here
-    end
-
-    def to_s(format = :standard)
-      @format = FORMAT[format]
-      raise ArgumentError.new "Invalid format #{format}" unless @format
-
-      case @precision[:symbol]
-      when :billion_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :hundred_million_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :ten_million_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :million_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :hundred_thousand_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :ten_thousand_years then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :millennium then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :century then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :decade then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :year then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :month then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :day then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :hour then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :minute then raise NotImplementedError.new("to_s for #{@precision[:symbol]} not yet implemented")
-      when :second then to_s_second
-      else raise StandardError.new("Some error message")
+    def date_to_string(date)
+      precision = date.precision.fetch(:symbol, nil)
+      case precision
+      when :billion_years then billion_years
+      when :hundred_million_years then hundred_million_years
+      when :ten_million_years then ten_million_years
+      when :million_years then million_years
+      when :hundred_thousand_years then hundred_thousand_years
+      when :ten_thousand_years then ten_thousand_years
+      when :millennium then millennium
+      when :century then century
+      when :decade then decade
+      when :year then year
+      when :month then month
+      when :day then day
+      when :hour then hour
+      when :minute then minute
+      when :second then second
+      else raise StandardError.new("Unrecognized precision: #{precision}")
       end
 
     end
 
-    private
+  end
 
-    def to_s_second
+  class StandardFormatter < Formatter
+
+    def second
       "SOME SECONDS"
     end
 
