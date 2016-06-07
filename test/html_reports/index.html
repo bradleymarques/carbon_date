@@ -13,12 +13,12 @@
     <div class="jumbotron">
         <h1>Test Results</h1>
         <p>
-            Finished in 0.00s, 5731.10 tests/s, 22924.39 assertions/s
+            Finished in 0.00s, 6050.15 tests/s, 23336.28 assertions/s
         </p>
         <p>
             <strong>
-            <span class="">19 tests</span>,
-            <span class=""> 76 assertions</span>,
+            <span class="">21 tests</span>,
+            <span class=""> 81 assertions</span>,
             <span class="text-danger"> 1 failures</span>,
             <span class=""> 0 errors</span>,
             <span class="text-warning"> 2 skips</span>
@@ -26,14 +26,14 @@
         </p>
 
         <div class="progress">
-            <div class="progress-bar progress-bar-info" style="width: 85%">
-                85% passed
+            <div class="progress-bar progress-bar-info" style="width: 87%">
+                87% passed
             </div>
-            <div class="progress-bar progress-bar-danger" style="width: 5%">
-                5% failed
+            <div class="progress-bar progress-bar-danger" style="width: 4%">
+                4% failed
             </div>
-            <div class="progress-bar progress-bar-warning" style="width: 10%">
-                10% skipped
+            <div class="progress-bar progress-bar-warning" style="width: 9%">
+                9% skipped
             </div>
         </div>
 
@@ -42,14 +42,14 @@
 
     
         <div class="panel panel-default">
-            <div class="panel-heading"><strong>CarbonDateTest</strong>
+            <div class="panel-heading"><strong>DateTest</strong>
                 <span class="pull-right">
-                    <span class="">19 tests</span>,
-                    <span class=""> 76 assertions</span>,
+                    <span class="">21 tests</span>,
+                    <span class=""> 81 assertions</span>,
                     <span class="text-danger"> 1 failures</span>,
                     <span class=""> 0 errors</span>,
                     <span class="text-warning"> 2 skips</span>,
-                    <span> finished in 0.0019s</span>
+                    <span> finished in 0.0020s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -62,18 +62,17 @@
                                 
                                 test_it_can_be_converted_to_a_string_with_second_precision
                                 <span class="pull-right">
-                                    Assertions 3, time 0.001477s
+                                    Assertions 1, time 0.001466s
                                 </span>
                             </h5>
                             
-                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/carbon_date_test.rb:163
+                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/date_test.rb:177
 
 --- expected
 +++ actual
-@@ -1 +1,2 @@
--"500-12-06 19:00:01 BCE"
-+# encoding: US-ASCII
-+"-500-12-06 19:00:01"
+@@ -1 +1 @@
+-"2016-06-06 08:46:42"
++"converting a date to a string"
 </pre>
                             
                         </div>
@@ -85,11 +84,11 @@
                                 
                                 test_it_can_be_converted_to_datetime_object
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000026s
+                                    Assertions 0, time 0.000020s
                                 </span>
                             </h5>
                             
-                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/carbon_date_test.rb:120
+                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/date_test.rb:131
 
 Not yet implemented</pre>
                             
@@ -102,11 +101,11 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_initialized_with_iso8601_timestamp
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000021s
+                                    Assertions 0, time 0.000027s
                                 </span>
                             </h5>
                             
-                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/carbon_date_test.rb:124
+                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/test/date_test.rb:135
 
 Not yet implemented</pre>
                             
@@ -117,9 +116,22 @@ Not yet implemented</pre>
                                 
                                     <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
                                 
+                                test_it_can_be_initialized_with_default_fields
+                                <span class="pull-right">
+                                    Assertions 6, time 0.000010s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
                                 test_it_can_be_initialized_with_minute_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000013s
+                                    Assertions 6, time 0.000049s
                                 </span>
                             </h5>
                             
@@ -132,7 +144,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_initialized_with_second_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000014s
+                                    Assertions 6, time 0.000019s
                                 </span>
                             </h5>
                             
@@ -145,7 +157,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_billion_years_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000013s
+                                    Assertions 6, time 0.000011s
                                 </span>
                             </h5>
                             
@@ -158,7 +170,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_century_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000021s
+                                    Assertions 6, time 0.000014s
                                 </span>
                             </h5>
                             
@@ -184,7 +196,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_decade_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000012s
+                                    Assertions 6, time 0.000011s
                                 </span>
                             </h5>
                             
@@ -197,7 +209,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_hour_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000014s
+                                    Assertions 6, time 0.000013s
                                 </span>
                             </h5>
                             
@@ -210,7 +222,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_millenium_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000011s
+                                    Assertions 6, time 0.000014s
                                 </span>
                             </h5>
                             
@@ -223,7 +235,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_month_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000013s
+                                    Assertions 6, time 0.000012s
                                 </span>
                             </h5>
                             
@@ -249,7 +261,7 @@ Not yet implemented</pre>
                                 
                                 test_it_handles_leap_years_correctly
                                 <span class="pull-right">
-                                    Assertions 4, time 0.000082s
+                                    Assertions 4, time 0.000098s
                                 </span>
                             </h5>
                             
@@ -275,7 +287,20 @@ Not yet implemented</pre>
                                 
                                 test_it_raises_an_error_if_year_is_nil
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000031s
+                                    Assertions 1, time 0.000010s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_it_raises_error_if_trying_to_format_with_unrecognized_format
+                                <span class="pull-right">
+                                    Assertions 1, time 0.000018s
                                 </span>
                             </h5>
                             
@@ -288,7 +313,7 @@ Not yet implemented</pre>
                                 
                                 test_it_throws_an_error_if_invalid_day
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000032s
+                                    Assertions 1, time 0.000033s
                                 </span>
                             </h5>
                             
@@ -301,7 +326,7 @@ Not yet implemented</pre>
                                 
                                 test_it_throws_an_error_if_invalid_day_for_months_that_have_30_days
                                 <span class="pull-right">
-                                    Assertions 4, time 0.000106s
+                                    Assertions 4, time 0.000128s
                                 </span>
                             </h5>
                             
@@ -314,7 +339,7 @@ Not yet implemented</pre>
                                 
                                 test_it_throws_an_error_if_invalid_month
                                 <span class="pull-right">
-                                    Assertions 2, time 0.000018s
+                                    Assertions 2, time 0.000026s
                                 </span>
                             </h5>
                             

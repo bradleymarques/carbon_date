@@ -1,9 +1,20 @@
 require 'test_helper'
+
 include CarbonDate
 
-class CarbonDateTest < Minitest::Test
+class DateTest < Minitest::Test
 
   # ==================== Basic initialization ====================
+
+  def test_it_can_be_initialized_with_default_fields
+    date = CarbonDate::Date.new()
+    assert date.year
+    assert date.month
+    assert date.day
+    assert date.hour
+    assert date.minute
+    assert date.second
+  end
 
   def test_it_can_be_initialized_with_second_precision
     date = CarbonDate::Date.new(year: 2016, month: 6, day: 6, hour: 8, minute: 46, second: 42, precision: :second)
@@ -152,6 +163,11 @@ class CarbonDateTest < Minitest::Test
   # TODO: Write tests to validate time
 
   # ==================== To Strings ====================
+
+  def test_it_raises_error_if_trying_to_format_with_unrecognized_format
+    d = CarbonDate::Date.new()
+    assert_raises(ArgumentError) { d.to_s(:klingon_date_format) }
+  end
 
   def test_it_can_be_converted_to_a_string_with_second_precision
     date1 = CarbonDate::Date.new(year: 2016, month: 6, day: 6, hour: 8, minute: 46, second: 42, precision: :second)
