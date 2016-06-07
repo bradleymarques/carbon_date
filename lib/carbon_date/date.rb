@@ -30,7 +30,7 @@ module CarbonDate
       @precision = PRECISION.find { |p| p[:symbol] == precision }
       raise ArgumentError.new "Invalid precision" unless @precision
 
-      raise ArgumentError.new "Year cannot be nil" if year.nil?
+      raise ArgumentError.new "Invalid year" if ((year.nil?) || (year == 0))
       @year = year
 
       if @precision[:level] >= 10
