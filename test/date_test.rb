@@ -194,31 +194,55 @@ class DateTest < Minitest::Test
   end
 
   def test_it_can_be_formatted_with_day_precision
-    assert_equal "6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
-    assert_equal "2 September, 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
-    assert_equal "15 March, 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
-    assert_equal "15 March, CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
+    assert_equal "2nd September, 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
+    assert_equal "15th March, 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "15th March, CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
   end
 
   def test_it_can_be_formatted_with_hour_precision
-    skip
+    skip 'This one is tricky.'
   end
 
   def test_it_can_be_formatted_with_minute_precision
-    assert_equal "06:45 6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, precision: :minute).to_s
-    assert_equal "18:01 15 July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, precision: :minute).to_s
-    assert_equal "00:00 1 January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, precision: :minute).to_s
-    assert_equal "11:11 11 November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
-    assert_equal "11:11 11 November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
+    assert_equal "06:45 6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, precision: :minute).to_s
+    assert_equal "18:01 15th July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, precision: :minute).to_s
+    assert_equal "00:00 1st January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, precision: :minute).to_s
+    assert_equal "11:11 11th November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
+    assert_equal "11:11 11th November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
   end
 
   def test_it_can_be_converted_to_a_string_with_second_precision
-    assert_equal "06:45:30 6 June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, second: 30, precision: :second).to_s
-    assert_equal "18:01:01 15 July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, second: 1, precision: :second).to_s
-    assert_equal "00:00:00 1 January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second).to_s
-    assert_equal "11:11:11 11 November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
-    assert_equal "11:11:11 11 November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
+    assert_equal "06:45:30 6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, second: 30, precision: :second).to_s
+    assert_equal "18:01:01 15th July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, second: 1, precision: :second).to_s
+    assert_equal "00:00:00 1st January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second).to_s
+    assert_equal "11:11:11 11th November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
+    assert_equal "11:11:11 11th November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
   end
+
+  # Useful reference: https://en.wikipedia.org/wiki/List_of_decades
+  def test_it_can_be_formatted_with_decade_precision
+    assert_equal "1940s", CarbonDate::Date.new(year: 1940, precision: :decade).to_s
+    assert_equal "1940s", CarbonDate::Date.new(year: 1945, precision: :decade).to_s
+    assert_equal "1940s", CarbonDate::Date.new(year: 1949, precision: :decade).to_s
+    assert_equal "1950s", CarbonDate::Date.new(year: 1950, precision: :decade).to_s
+    assert_equal "1950s BCE", CarbonDate::Date.new(year: -1955, precision: :decade).to_s
+    assert_equal "0s BCE", CarbonDate::Date.new(year: -1, precision: :decade).to_s
+    assert_equal "CE 0s", CarbonDate::Date.new(year: 1, precision: :decade).to_s
+    assert_equal "10s BCE", CarbonDate::Date.new(year: -15, precision: :decade).to_s
+    assert_equal "CE 10s", CarbonDate::Date.new(year: 15, precision: :decade).to_s
+  end
+
+  def test_it_can_be_formatted_with_century_precision
+    skip
+  end
+
+  def test_it_can_be_formatted_with_millennium_precision
+    skip
+  end
+
+
+
 
   # TODO: More to_s tests
 

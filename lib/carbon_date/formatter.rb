@@ -1,3 +1,5 @@
+require 'active_support/core_ext/integer/inflections'
+
 module CarbonDate
 
   ##
@@ -63,7 +65,7 @@ module CarbonDate
     end
 
     def day(date)
-      [date.day.to_s, month(date)].join(' ')
+      [date.day.ordinalize.to_s, month(date)].join(' ')
     end
 
     def hour(date)
