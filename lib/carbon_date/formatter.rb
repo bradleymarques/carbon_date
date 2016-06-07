@@ -60,6 +60,10 @@ module CarbonDate
       [months[date.month - 1], year(date)].join(' ')
     end
 
+    def day(date)
+      [date.day.to_s, month(date)].join(' ')
+    end
+
     def second(date)
       "SOME SECONDS"
     end

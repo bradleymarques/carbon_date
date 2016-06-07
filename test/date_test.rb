@@ -193,6 +193,13 @@ class DateTest < Minitest::Test
     assert_equal "December CE 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
   end
 
+  def test_it_can_be_formatted_with_day_precision
+    assert_equal "6 June 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
+    assert_equal "2 September 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
+    assert_equal "15 March 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "15 March CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
+  end
+
 
 
   def test_it_can_be_converted_to_a_string_with_second_precision
