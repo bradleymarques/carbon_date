@@ -31,7 +31,7 @@ module CarbonDate
       raise ArgumentError.new "Invalid precision" unless @precision
 
       raise ArgumentError.new "Invalid year" if ((year.nil?) || (year == 0))
-      @year = year
+      @year = year.to_i
 
       if @precision[:level] >= 10
         raise ArgumentError.new "Invalid month #{month}" unless (1..12).include? month

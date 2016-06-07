@@ -4,24 +4,28 @@ module CarbonDate
   # Responsible for formatting a CarbonDate::Date to a human-readable string
   class Formatter
 
+    ##
+    # The year in Common Era (CE) at which we can stop saying 'CE'
+    CE_THRESHOLD = 500
+
     def date_to_string(date)
       precision = date.precision.fetch(:symbol, nil)
       case precision
-      when :billion_years then billion_years
-      when :hundred_million_years then hundred_million_years
-      when :ten_million_years then ten_million_years
-      when :million_years then million_years
-      when :hundred_thousand_years then hundred_thousand_years
-      when :ten_thousand_years then ten_thousand_years
-      when :millennium then millennium
-      when :century then century
-      when :decade then decade
-      when :year then year
-      when :month then month
-      when :day then day
-      when :hour then hour
-      when :minute then minute
-      when :second then second
+      when :billion_years then billion_years(date)
+      when :hundred_million_years then hundred_million_years(date)
+      when :ten_million_years then ten_million_years(date)
+      when :million_years then million_years(date)
+      when :hundred_thousand_years then hundred_thousand_years(date)
+      when :ten_thousand_years then ten_thousand_years(date)
+      when :millennium then millennium(date)
+      when :century then century(date)
+      when :decade then decade(date)
+      when :year then year(date)
+      when :month then month(date)
+      when :day then day(date)
+      when :hour then hour(date)
+      when :minute then minute(date)
+      when :second then second(date)
       else raise StandardError.new("Unrecognized precision: #{precision}")
       end
 
@@ -31,7 +35,17 @@ module CarbonDate
 
   class StandardFormatter < Formatter
 
-    def second
+    def year(date)
+      y = date.year.abs.to_s
+      if (date.year <= -1)
+        return y + ' BCE'
+      elsif (date.year <= CE_THRESHOLD)
+        return 'CE ' + y
+      end
+      return y
+    end
+
+    def second(date)
       "SOME SECONDS"
     end
 
