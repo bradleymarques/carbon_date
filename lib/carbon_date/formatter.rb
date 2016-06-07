@@ -82,6 +82,17 @@ module CarbonDate
       [time, day(date)].join(' ')
     end
 
+    def decade(date)
+      d = (date.year.abs.to_i / 10) * 10
+      d_str = [d.to_s, 's'].join('')
+      if (date.year <= -1)
+        return [d_str, BCE_SUFFIX].join(' ')
+      elsif (date.year <= CE_THRESHOLD)
+        return [CE_PREFIX, d_str].join(' ')
+      end
+      return d_str
+    end
+
     def pad(s)
       s.rjust(2, '0')
     end

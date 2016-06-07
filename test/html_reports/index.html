@@ -13,24 +13,24 @@
     <div class="jumbotron">
         <h1>Test Results</h1>
         <p>
-            Finished in 0.00s, 11630.14 tests/s, 39017.23 assertions/s
+            Finished in 0.00s, 12618.04 tests/s, 45994.79 assertions/s
         </p>
         <p>
             <strong>
-            <span class="">31 tests</span>,
-            <span class=""> 104 assertions</span>,
+            <span class="text-info">31 tests</span>,
+            <span class="text-info"> 113 assertions</span>,
             <span class=""> 0 failures</span>,
-            <span class="text-danger"> 1 errors</span>,
+            <span class=""> 0 errors</span>,
             <span class="text-warning"> 5 skips</span>
             </strong>
         </p>
 
         <div class="progress">
-            <div class="progress-bar progress-bar-info" style="width: 81%">
-                81% passed
+            <div class="progress-bar progress-bar-info" style="width: 84%">
+                84% passed
             </div>
-            <div class="progress-bar progress-bar-danger" style="width: 3%">
-                3% failed
+            <div class="progress-bar progress-bar-danger" style="width: 0%">
+                0% failed
             </div>
             <div class="progress-bar progress-bar-warning" style="width: 16%">
                 16% skipped
@@ -44,12 +44,12 @@
         <div class="panel panel-default">
             <div class="panel-heading"><strong>DateTest</strong>
                 <span class="pull-right">
-                    <span class="">31 tests</span>,
-                    <span class=""> 104 assertions</span>,
+                    <span class="text-info">31 tests</span>,
+                    <span class="text-info"> 113 assertions</span>,
                     <span class=""> 0 failures</span>,
-                    <span class="text-danger"> 1 errors</span>,
+                    <span class=""> 0 errors</span>,
                     <span class="text-warning"> 5 skips</span>,
-                    <span> finished in 0.0009s</span>
+                    <span> finished in 0.0010s</span>
                 </span>
             </div>
             <div class="panel-body">
@@ -62,7 +62,7 @@
                                 
                                 test_it_can_be_converted_to_datetime_object
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000020s
+                                    Assertions 0, time 0.000021s
                                 </span>
                             </h5>
                             
@@ -79,7 +79,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_formatted_with_century_precision
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000021s
+                                    Assertions 0, time 0.000019s
                                 </span>
                             </h5>
                             
@@ -92,31 +92,11 @@ Skipped, no message given</pre>
                         <div class="list-group-item">
                             <h5 class="list-group-item-heading">
                                 
-                                    <span class="glyphicon glyphicon-remove text-danger"  aria-hidden="true"></span>
-                                
-                                test_it_can_be_formatted_with_decade_precision
-                                <span class="pull-right">
-                                    Assertions 0, time 0.000033s
-                                </span>
-                            </h5>
-                            
-                                <pre class="list-group-item-text">/home/brad/LocalWork/carbon_date/lib/carbon_date/formatter.rb:32
-
-NoMethodError: undefined method `decade' for #<CarbonDate::StandardFormatter:0x00564ffdb48180>
-    /home/brad/LocalWork/carbon_date/lib/carbon_date/formatter.rb:32:in `date_to_string'
-    /home/brad/LocalWork/carbon_date/lib/carbon_date/date.rb:70:in `to_s'
-    /home/brad/LocalWork/carbon_date/test/date_test.rb:225:in `test_it_can_be_formatted_with_decade_precision'</pre>
-                            
-                        </div>
-                    
-                        <div class="list-group-item">
-                            <h5 class="list-group-item-heading">
-                                
                                     <span class="glyphicon glyphicon-ban-circle text-warning" aria-hidden="true"></span>
                                 
                                 test_it_can_be_formatted_with_hour_precision
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000024s
+                                    Assertions 0, time 0.000019s
                                 </span>
                             </h5>
                             
@@ -133,7 +113,7 @@ This one is tricky.</pre>
                                 
                                 test_it_can_be_formatted_with_millennium_precision
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000022s
+                                    Assertions 0, time 0.000043s
                                 </span>
                             </h5>
                             
@@ -150,7 +130,7 @@ Skipped, no message given</pre>
                                 
                                 test_it_can_be_initialized_with_iso8601_timestamp
                                 <span class="pull-right">
-                                    Assertions 0, time 0.000018s
+                                    Assertions 0, time 0.000020s
                                 </span>
                             </h5>
                             
@@ -167,7 +147,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_converted_to_a_string_with_second_precision
                                 <span class="pull-right">
-                                    Assertions 5, time 0.000098s
+                                    Assertions 5, time 0.000076s
                                 </span>
                             </h5>
                             
@@ -180,7 +160,20 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_formatted_with_day_precision
                                 <span class="pull-right">
-                                    Assertions 4, time 0.000041s
+                                    Assertions 4, time 0.000059s
+                                </span>
+                            </h5>
+                            
+                        </div>
+                    
+                        <div class="list-group-item">
+                            <h5 class="list-group-item-heading">
+                                
+                                    <span class="glyphicon glyphicon-ok text-info" aria-hidden="true"></span>
+                                
+                                test_it_can_be_formatted_with_decade_precision
+                                <span class="pull-right">
+                                    Assertions 9, time 0.000080s
                                 </span>
                             </h5>
                             
@@ -193,7 +186,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_formatted_with_minute_precision
                                 <span class="pull-right">
-                                    Assertions 5, time 0.000080s
+                                    Assertions 5, time 0.000081s
                                 </span>
                             </h5>
                             
@@ -206,7 +199,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_formatted_with_month_precision
                                 <span class="pull-right">
-                                    Assertions 4, time 0.000036s
+                                    Assertions 4, time 0.000031s
                                 </span>
                             </h5>
                             
@@ -219,7 +212,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_formatted_with_year_precision
                                 <span class="pull-right">
-                                    Assertions 3, time 0.000023s
+                                    Assertions 3, time 0.000025s
                                 </span>
                             </h5>
                             
@@ -232,7 +225,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_initialized_with_default_fields
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000012s
+                                    Assertions 6, time 0.000011s
                                 </span>
                             </h5>
                             
@@ -245,7 +238,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_initialized_with_minute_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000012s
+                                    Assertions 6, time 0.000053s
                                 </span>
                             </h5>
                             
@@ -258,7 +251,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_initialized_with_second_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000024s
+                                    Assertions 6, time 0.000015s
                                 </span>
                             </h5>
                             
@@ -310,7 +303,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_decade_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000012s
+                                    Assertions 6, time 0.000014s
                                 </span>
                             </h5>
                             
@@ -323,7 +316,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_hour_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000013s
+                                    Assertions 6, time 0.000014s
                                 </span>
                             </h5>
                             
@@ -336,7 +329,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_millenium_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000011s
+                                    Assertions 6, time 0.000025s
                                 </span>
                             </h5>
                             
@@ -349,7 +342,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_month_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000012s
+                                    Assertions 6, time 0.000013s
                                 </span>
                             </h5>
                             
@@ -362,7 +355,7 @@ Not yet implemented</pre>
                                 
                                 test_it_can_be_intitialized_with_year_precision
                                 <span class="pull-right">
-                                    Assertions 6, time 0.000043s
+                                    Assertions 6, time 0.000013s
                                 </span>
                             </h5>
                             
@@ -388,7 +381,7 @@ Not yet implemented</pre>
                                 
                                 test_it_has_a_threshold_to_add_common_era
                                 <span class="pull-right">
-                                    Assertions 2, time 0.000021s
+                                    Assertions 2, time 0.000018s
                                 </span>
                             </h5>
                             
@@ -401,7 +394,7 @@ Not yet implemented</pre>
                                 
                                 test_it_raises_an_error_if_precision_invalid
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000012s
+                                    Assertions 1, time 0.000011s
                                 </span>
                             </h5>
                             
@@ -414,7 +407,7 @@ Not yet implemented</pre>
                                 
                                 test_it_raises_an_error_if_year_is_nil
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000013s
+                                    Assertions 1, time 0.000011s
                                 </span>
                             </h5>
                             
@@ -427,7 +420,7 @@ Not yet implemented</pre>
                                 
                                 test_it_throws_an_error_if_invalid_day
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000033s
+                                    Assertions 1, time 0.000036s
                                 </span>
                             </h5>
                             
@@ -440,7 +433,7 @@ Not yet implemented</pre>
                                 
                                 test_it_throws_an_error_if_invalid_day_for_months_that_have_30_days
                                 <span class="pull-right">
-                                    Assertions 4, time 0.000113s
+                                    Assertions 4, time 0.000098s
                                 </span>
                             </h5>
                             
@@ -466,7 +459,7 @@ Not yet implemented</pre>
                                 
                                 test_there_is_no_year_0
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000049s
+                                    Assertions 1, time 0.000017s
                                 </span>
                             </h5>
                             
@@ -479,7 +472,7 @@ Not yet implemented</pre>
                                 
                                 test_years_are_converted_to_integers
                                 <span class="pull-right">
-                                    Assertions 1, time 0.000010s
+                                    Assertions 1, time 0.000011s
                                 </span>
                             </h5>
                             
