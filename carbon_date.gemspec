@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "carbon_date"
   spec.version       = CarbonDate::VERSION
   spec.authors       = ["Bradley Marques"]
-  spec.email         = ["bradmarxmoosepi@gmail.com"]
+  spec.email         = ["bradleyrcmarques@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{(Pre)historical dates in Ruby}
+  spec.description   = %q{Models (pre)historical dates with (im)precision in Ruby}
+  spec.homepage      = "https://github.com/bradleymarques/carbon_date"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'm', '>= 1.5.0'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rdoc'
+
 end

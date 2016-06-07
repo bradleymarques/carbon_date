@@ -12,8 +12,6 @@ require 'minitest/autorun'
 require 'minitest/display'
 require 'minitest/reporters'
 
-require "#{File.join(Dir.pwd, 'test', 'test_api_results', 'response_faker')}"
-
 MiniTest::Display.options = {
   suite_names: true,
   :suite_divider => '|',
