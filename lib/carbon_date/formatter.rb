@@ -88,6 +88,31 @@ module CarbonDate
       return m
     end
 
+    def ten_thousand_years(date)
+      coarse_precision(date.year, 10e3.to_i)
+    end
+
+    def coarse_precision(date_year, interval)
+
+      date_year = date_year.to_i
+      interval = interval.to_i
+
+      year_diff = date_year - ::Date.today.year
+      return "Within the last #{number_with_delimiter(interval)} years" if (-(interval - 1)..0).include? year_diff
+      return "Within the next #{number_with_delimiter(interval)} years" if (1..(interval - 1)).include? year_diff
+
+      rounded = (year_diff.to_f / interval.to_f).round * interval
+      return "in #{number_with_delimiter(rounded.abs)} years" if rounded > 0
+      return "#{number_with_delimiter(rounded.abs)} years ago" if rounded < 0
+      nil
+    end
+
+    def number_with_delimiter(n, delim = ',')
+      n.to_i.to_s.reverse.chars.each_slice(3).map(&:join).join(delim).reverse
+    end
+
+
+
     def pad(s)
       return s.rjust(2, '0')
     end
