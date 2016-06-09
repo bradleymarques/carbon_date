@@ -85,6 +85,12 @@ module CarbonDate
       return c
     end
 
+    def millennium(date)
+      m = ((date.year.abs.to_i / 1000) + 1).ordinalize + ' millennium'
+      return [m, BCE_SUFFIX].join(' ') if (date.year <= -1)
+      return m
+    end
+
     def pad(s)
       s.rjust(2, '0')
     end

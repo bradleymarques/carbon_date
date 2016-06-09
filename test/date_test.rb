@@ -178,6 +178,8 @@ class DateTest < Minitest::Test
     assert_equal '2016', CarbonDate::Date.new(year: 2016, precision: :year).to_s
     assert_equal '4600000', CarbonDate::Date.new(year: 4.6e6, precision: :year).to_s
     assert_equal '2000 BCE', CarbonDate::Date.new(year: -2000, precision: :year).to_s
+    assert_equal '1', CarbonDate::Date.new(year: 1, precision: :year).to_s
+    assert_equal '1 BCE', CarbonDate::Date.new(year: -1, precision: :year).to_s
   end
 
   def test_it_can_be_formatted_with_month_precision
@@ -239,8 +241,18 @@ class DateTest < Minitest::Test
     assert_equal "2nd century BCE", CarbonDate::Date.new(year: -100, precision: :century).to_s
   end
 
+  # Useful reference: https://en.wikipedia.org/wiki/List_of_decades
   def test_it_can_be_formatted_with_millennium_precision
-    skip
+    assert_equal "3rd millennium", CarbonDate::Date.new(year: 2001, precision: :millennium).to_s
+    assert_equal "2nd millennium", CarbonDate::Date.new(year: 1001, precision: :millennium).to_s
+    assert_equal "1st millennium", CarbonDate::Date.new(year: 1, precision: :millennium).to_s
+    assert_equal "1st millennium BCE", CarbonDate::Date.new(year: -1, precision: :millennium).to_s
+    assert_equal "2nd millennium BCE", CarbonDate::Date.new(year: -1001, precision: :millennium).to_s
+    assert_equal "3rd millennium BCE", CarbonDate::Date.new(year: -2001, precision: :millennium).to_s
+    assert_equal "1st millennium", CarbonDate::Date.new(year: 999, precision: :millennium).to_s
+    assert_equal "2nd millennium", CarbonDate::Date.new(year: 1000, precision: :millennium).to_s
+    assert_equal "1st millennium BCE", CarbonDate::Date.new(year: -999, precision: :millennium).to_s
+    assert_equal "2nd millennium BCE", CarbonDate::Date.new(year: -1000, precision: :millennium).to_s
   end
 
 end
