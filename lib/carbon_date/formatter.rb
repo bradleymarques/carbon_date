@@ -132,8 +132,6 @@ module CarbonDate
       n.to_i.to_s.reverse.chars.each_slice(3).map(&:join).join(delim).reverse
     end
 
-
-
     def pad(s)
       return s.rjust(2, '0')
     end
