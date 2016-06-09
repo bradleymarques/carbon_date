@@ -38,6 +38,8 @@ module CarbonDate
     # Suffix to use for Before Common Era dates (quite often BCE or BC)
     BCE_SUFFIX = 'BCE'
 
+    MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
     private
 
     def year(date)
@@ -46,16 +48,12 @@ module CarbonDate
       return y
     end
 
-    def months
-      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    end
-
     def month(date)
-      [months[date.month - 1], year(date)].join(', ')
+      return [MONTHS[date.month - 1], year(date)].join(', ')
     end
 
     def day(date)
-      [date.day.ordinalize.to_s, month(date)].join(' ')
+      return [date.day.ordinalize.to_s, month(date)].join(' ')
     end
 
     def hour(date)
@@ -64,19 +62,18 @@ module CarbonDate
 
     def minute(date)
       time = [pad(date.hour.to_s), pad(date.minute.to_s)].join(':')
-      [time, day(date)].join(' ')
+      return [time, day(date)].join(' ')
     end
 
     def second(date)
       time = [pad(date.hour.to_s), pad(date.minute.to_s), pad(date.second.to_s)].join(':')
-      [time, day(date)].join(' ')
+      return [time, day(date)].join(' ')
     end
 
     def decade(date)
-      d = (date.year.abs.to_i / 10) * 10
-      d_str = [d.to_s, 's'].join('')
-      return [d_str, BCE_SUFFIX].join(' ') if (date.year <= -1)
-      return d_str
+      d = ((date.year.abs.to_i / 10) * 10).to_s + 's'
+      return [d, BCE_SUFFIX].join(' ') if (date.year <= -1)
+      return d
     end
 
     def century(date)
@@ -92,7 +89,7 @@ module CarbonDate
     end
 
     def pad(s)
-      s.rjust(2, '0')
+      return s.rjust(2, '0')
     end
 
   end
