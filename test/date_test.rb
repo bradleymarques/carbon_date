@@ -180,24 +180,18 @@ class DateTest < Minitest::Test
     assert_equal '2000 BCE', CarbonDate::Date.new(year: -2000, precision: :year).to_s
   end
 
-  def test_it_has_a_threshold_to_add_common_era
-    threshold = CarbonDate::Formatter::CE_THRESHOLD
-    assert_equal "CE #{threshold}", CarbonDate::Date.new(year: threshold, precision: :year).to_s
-    assert_equal "#{threshold + 1}", CarbonDate::Date.new(year: threshold + 1, precision: :year).to_s
-  end
-
   def test_it_can_be_formatted_with_month_precision
     assert_equal "June, 1945", CarbonDate::Date.new(year: 1945, month: 6, precision: :month).to_s
     assert_equal "September, 2016", CarbonDate::Date.new(year: 2016, month: 9, precision: :month).to_s
     assert_equal "April, 50 BCE", CarbonDate::Date.new(year: -50, month: 4, precision: :month).to_s
-    assert_equal "December, CE 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
+    assert_equal "December, 50", CarbonDate::Date.new(year: 50, month: 12, precision: :month).to_s
   end
 
   def test_it_can_be_formatted_with_day_precision
     assert_equal "6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, precision: :day).to_s
     assert_equal "2nd September, 2016", CarbonDate::Date.new(year: 2016, month: 9, day: 2, precision: :day).to_s
     assert_equal "15th March, 44 BCE", CarbonDate::Date.new(year: -44, month: 3, day: 15, precision: :day).to_s
-    assert_equal "15th March, CE 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
+    assert_equal "15th March, 44", CarbonDate::Date.new(year: 44, month: 3, day: 15, precision: :day).to_s
   end
 
   def test_it_can_be_formatted_with_hour_precision
@@ -208,7 +202,7 @@ class DateTest < Minitest::Test
     assert_equal "06:45 6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, precision: :minute).to_s
     assert_equal "18:01 15th July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, precision: :minute).to_s
     assert_equal "00:00 1st January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, precision: :minute).to_s
-    assert_equal "11:11 11th November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
+    assert_equal "11:11 11th November, 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
     assert_equal "11:11 11th November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, precision: :minute).to_s
   end
 
@@ -216,7 +210,7 @@ class DateTest < Minitest::Test
     assert_equal "06:45:30 6th June, 1945", CarbonDate::Date.new(year: 1945, month: 6, day: 6, hour: 6, minute: 45, second: 30, precision: :second).to_s
     assert_equal "18:01:01 15th July, 2016", CarbonDate::Date.new(year: 2016, month: 7, day: 15, hour: 18, minute: 1, second: 1, precision: :second).to_s
     assert_equal "00:00:00 1st January, 1970", CarbonDate::Date.new(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second).to_s
-    assert_equal "11:11:11 11th November, CE 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
+    assert_equal "11:11:11 11th November, 11", CarbonDate::Date.new(year: 11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
     assert_equal "11:11:11 11th November, 11 BCE", CarbonDate::Date.new(year: -11, month: 11, day: 11, hour: 11, minute: 11, second: 11, precision: :second).to_s
   end
 
@@ -228,34 +222,25 @@ class DateTest < Minitest::Test
     assert_equal "1950s", CarbonDate::Date.new(year: 1950, precision: :decade).to_s
     assert_equal "1950s BCE", CarbonDate::Date.new(year: -1955, precision: :decade).to_s
     assert_equal "0s BCE", CarbonDate::Date.new(year: -1, precision: :decade).to_s
-    assert_equal "CE 0s", CarbonDate::Date.new(year: 1, precision: :decade).to_s
+    assert_equal "0s", CarbonDate::Date.new(year: 1, precision: :decade).to_s
     assert_equal "10s BCE", CarbonDate::Date.new(year: -15, precision: :decade).to_s
-    assert_equal "CE 10s", CarbonDate::Date.new(year: 15, precision: :decade).to_s
+    assert_equal "10s", CarbonDate::Date.new(year: 15, precision: :decade).to_s
   end
 
+  # Useful reference: https://en.wikipedia.org/wiki/List_of_decades
   def test_it_can_be_formatted_with_century_precision
-    skip
+    assert_equal "20th century", CarbonDate::Date.new(year: 1940, precision: :century).to_s
+    assert_equal "20th century", CarbonDate::Date.new(year: 1999, precision: :century).to_s
+    assert_equal "21st century", CarbonDate::Date.new(year: 2000, precision: :century).to_s
+    assert_equal "1st century", CarbonDate::Date.new(year: 1, precision: :century).to_s
+    assert_equal "1st century BCE", CarbonDate::Date.new(year: -1, precision: :century).to_s
+    assert_equal "20th century BCE", CarbonDate::Date.new(year: -1940, precision: :century).to_s
+    assert_equal "1st century BCE", CarbonDate::Date.new(year: -99, precision: :century).to_s
+    assert_equal "2nd century BCE", CarbonDate::Date.new(year: -100, precision: :century).to_s
   end
 
   def test_it_can_be_formatted_with_millennium_precision
     skip
   end
-
-
-
-
-  # TODO: More to_s tests
-
-  # EXAMPLES =
-  # [
-  #   {time: '+1989-00-00T00:00:00Z', precision: 9, string: "1989"},
-  #   {time: '+1400-00-00T00:00:00Z', precision: 7, string: "1400's", alt: "the fifteenth century"},
-  #   {time: '+2016-05-23T00:00:00Z', precision: 11, string: ''},
-  #   {time: '+2016-05-23T01:01:01Z', precision: 11, string: ''},
-  #   {time: '-0500-00-00T00:00:00Z', precision: 7 string: "5th century BCE"},
-  #   {time: '+2016-05-23T00:00:00Z', precision: 11},
-  #   {time: '+0632-06-08T00:00:00Z', precision: 11},
-  # ]
-
 
 end

@@ -6,18 +6,6 @@ module CarbonDate
   # Responsible for formatting a CarbonDate::Date to a human-readable string
   class Formatter
 
-    ##
-    # The year in Common Era (CE) at which we can stop saying 'CE'
-    CE_THRESHOLD = 500
-
-    ##
-    # Suffix to use for Before Common Era dates (quite often BCE or BC)
-    BCE_SUFFIX = 'BCE'
-
-    ##
-    # Prefix to use for Common Era dates (quite often CE or AD)
-    CE_PREFIX = 'CE'
-
     def date_to_string(date)
       precision = date.precision.fetch(:symbol, nil)
       case precision
@@ -42,17 +30,19 @@ module CarbonDate
 
   end
 
+  ##
+  # The default formatter for CarbonDate::Date
   class StandardFormatter < Formatter
+
+    ##
+    # Suffix to use for Before Common Era dates (quite often BCE or BC)
+    BCE_SUFFIX = 'BCE'
 
     private
 
     def year(date)
       y = date.year.abs.to_s
-      if (date.year <= -1)
-        return [y, BCE_SUFFIX].join(' ')
-      elsif (date.year <= CE_THRESHOLD)
-        return [CE_PREFIX, y].join(' ')
-      end
+      return [y, BCE_SUFFIX].join(' ') if (date.year <= -1)
       return y
     end
 
@@ -85,12 +75,14 @@ module CarbonDate
     def decade(date)
       d = (date.year.abs.to_i / 10) * 10
       d_str = [d.to_s, 's'].join('')
-      if (d <= -1)
-        return [d_str, BCE_SUFFIX].join(' ')
-      elsif (d <= CE_THRESHOLD)
-        return [CE_PREFIX, d_str].join(' ')
-      end
+      return [d_str, BCE_SUFFIX].join(' ') if (date.year <= -1)
       return d_str
+    end
+
+    def century(date)
+      c = ((date.year.abs.to_i / 100) + 1).ordinalize + ' century'
+      return [c, BCE_SUFFIX].join(' ') if (date.year <= -1)
+      return c
     end
 
     def pad(s)
