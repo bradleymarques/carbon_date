@@ -255,7 +255,7 @@ class DateTest < Minitest::Test
     assert_equal "2nd millennium BCE", CarbonDate::Date.new(year: -1000, precision: :millennium).to_s
   end
 
-  def test_it_can_be_fomratted_with_ten_thousand_years_precision
+  def test_it_can_be_formatted_with_ten_thousand_years_precision
     y = Date.today.year
     assert_equal 'Within the last 10,000 years', CarbonDate::Date.new(year: y, precision: :ten_thousand_years).to_s
     assert_equal 'Within the last 10,000 years', CarbonDate::Date.new(year: y - 9999, precision: :ten_thousand_years).to_s
@@ -269,6 +269,80 @@ class DateTest < Minitest::Test
     assert_equal '20,000 years ago', CarbonDate::Date.new(year: y - 15000, precision: :ten_thousand_years).to_s
     assert_equal '4,120,000 years ago', CarbonDate::Date.new(year: y - 4123456, precision: :ten_thousand_years).to_s
     assert_equal '4,130,000 years ago', CarbonDate::Date.new(year: y - 4125456, precision: :ten_thousand_years).to_s
+  end
+
+  def test_it_can_be_formatted_with_hundred_thousand_years_precision
+    y = Date.today.year
+    assert_equal 'Within the last 100,000 years', CarbonDate::Date.new(year: y, precision: :hundred_thousand_years).to_s
+    assert_equal 'Within the last 100,000 years', CarbonDate::Date.new(year: y - 99999, precision: :hundred_thousand_years).to_s
+    assert_equal 'Within the next 100,000 years', CarbonDate::Date.new(year: y + 1, precision: :hundred_thousand_years).to_s
+    assert_equal 'Within the next 100,000 years', CarbonDate::Date.new(year: y + 99999, precision: :hundred_thousand_years).to_s
+    assert_equal 'in 100,000 years', CarbonDate::Date.new(year: y + 100000, precision: :hundred_thousand_years).to_s
+    assert_equal 'in 100,000 years', CarbonDate::Date.new(year: y + 149999, precision: :hundred_thousand_years).to_s
+    assert_equal 'in 200,000 years', CarbonDate::Date.new(year: y + 150000, precision: :hundred_thousand_years).to_s
+    assert_equal '100,000 years ago', CarbonDate::Date.new(year: y - 100000, precision: :hundred_thousand_years).to_s
+    assert_equal '100,000 years ago', CarbonDate::Date.new(year: y - 149990, precision: :hundred_thousand_years).to_s
+    assert_equal '200,000 years ago', CarbonDate::Date.new(year: y - 150000, precision: :hundred_thousand_years).to_s
+    assert_equal '4,100,000 years ago', CarbonDate::Date.new(year: y - 4123456, precision: :hundred_thousand_years).to_s
+    assert_equal '4,200,000 years ago', CarbonDate::Date.new(year: y - 4153456, precision: :hundred_thousand_years).to_s
+  end
+
+  def test_it_can_be_formatted_with_million_years_precision
+    y = Date.today.year
+    assert_equal 'Within the last 1,000,000 years', CarbonDate::Date.new(year: y, precision: :million_years).to_s
+    assert_equal 'Within the last 1,000,000 years', CarbonDate::Date.new(year: y - 999999, precision: :million_years).to_s
+    assert_equal 'Within the next 1,000,000 years', CarbonDate::Date.new(year: y + 1, precision: :million_years).to_s
+    assert_equal 'Within the next 1,000,000 years', CarbonDate::Date.new(year: y + 999999, precision: :million_years).to_s
+    assert_equal 'in 1,000,000 years', CarbonDate::Date.new(year: y + 1000000, precision: :million_years).to_s
+    assert_equal 'in 1,000,000 years', CarbonDate::Date.new(year: y + 1499999, precision: :million_years).to_s
+    assert_equal 'in 2,000,000 years', CarbonDate::Date.new(year: y + 1500000, precision: :million_years).to_s
+    assert_equal '1,000,000 years ago', CarbonDate::Date.new(year: y - 1000000, precision: :million_years).to_s
+    assert_equal '1,000,000 years ago', CarbonDate::Date.new(year: y - 1499900, precision: :million_years).to_s
+    assert_equal '2,000,000 years ago', CarbonDate::Date.new(year: y - 1500000, precision: :million_years).to_s
+    assert_equal '4,000,000 years ago', CarbonDate::Date.new(year: y - 4123456, precision: :million_years).to_s
+    assert_equal '5,000,000 years ago', CarbonDate::Date.new(year: y - 4523456, precision: :million_years).to_s
+  end
+
+  def test_it_can_be_formatted_with_ten_million_years_precision
+    y = Date.today.year
+    assert_equal 'Within the last 10,000,000 years', CarbonDate::Date.new(year: y, precision: :ten_million_years).to_s
+    assert_equal 'Within the last 10,000,000 years', CarbonDate::Date.new(year: y - 9999999, precision: :ten_million_years).to_s
+    assert_equal 'Within the next 10,000,000 years', CarbonDate::Date.new(year: y + 1, precision: :ten_million_years).to_s
+    assert_equal 'Within the next 10,000,000 years', CarbonDate::Date.new(year: y + 9999999, precision: :ten_million_years).to_s
+    assert_equal 'in 10,000,000 years', CarbonDate::Date.new(year: y + 10000000, precision: :ten_million_years).to_s
+    assert_equal 'in 10,000,000 years', CarbonDate::Date.new(year: y + 14999999, precision: :ten_million_years).to_s
+    assert_equal 'in 20,000,000 years', CarbonDate::Date.new(year: y + 15000000, precision: :ten_million_years).to_s
+    assert_equal '10,000,000 years ago', CarbonDate::Date.new(year: y - 10000000, precision: :ten_million_years).to_s
+    assert_equal '10,000,000 years ago', CarbonDate::Date.new(year: y - 14999000, precision: :ten_million_years).to_s
+    assert_equal '20,000,000 years ago', CarbonDate::Date.new(year: y - 15000000, precision: :ten_million_years).to_s
+  end
+
+  def test_it_can_be_formatted_with_hundred_million_years_precision
+    y = Date.today.year
+    assert_equal 'Within the last 100,000,000 years', CarbonDate::Date.new(year: y, precision: :hundred_million_years).to_s
+    assert_equal 'Within the last 100,000,000 years', CarbonDate::Date.new(year: y - 99999999, precision: :hundred_million_years).to_s
+    assert_equal 'Within the next 100,000,000 years', CarbonDate::Date.new(year: y + 1, precision: :hundred_million_years).to_s
+    assert_equal 'Within the next 100,000,000 years', CarbonDate::Date.new(year: y + 99999999, precision: :hundred_million_years).to_s
+    assert_equal 'in 100,000,000 years', CarbonDate::Date.new(year: y + 100000000, precision: :hundred_million_years).to_s
+    assert_equal 'in 100,000,000 years', CarbonDate::Date.new(year: y + 149999999, precision: :hundred_million_years).to_s
+    assert_equal 'in 200,000,000 years', CarbonDate::Date.new(year: y + 150000000, precision: :hundred_million_years).to_s
+    assert_equal '100,000,000 years ago', CarbonDate::Date.new(year: y - 100000000, precision: :hundred_million_years).to_s
+    assert_equal '100,000,000 years ago', CarbonDate::Date.new(year: y - 149990000, precision: :hundred_million_years).to_s
+    assert_equal '200,000,000 years ago', CarbonDate::Date.new(year: y - 150000000, precision: :hundred_million_years).to_s
+  end
+
+  def test_it_can_be_formatted_with_billion_years_precision
+    y = Date.today.year
+    assert_equal 'Within the last 1,000,000,000 years', CarbonDate::Date.new(year: y, precision: :billion_years).to_s
+    assert_equal 'Within the last 1,000,000,000 years', CarbonDate::Date.new(year: y - 999999999, precision: :billion_years).to_s
+    assert_equal 'Within the next 1,000,000,000 years', CarbonDate::Date.new(year: y + 1, precision: :billion_years).to_s
+    assert_equal 'Within the next 1,000,000,000 years', CarbonDate::Date.new(year: y + 999999999, precision: :billion_years).to_s
+    assert_equal 'in 1,000,000,000 years', CarbonDate::Date.new(year: y + 1000000000, precision: :billion_years).to_s
+    assert_equal 'in 1,000,000,000 years', CarbonDate::Date.new(year: y + 1499999999, precision: :billion_years).to_s
+    assert_equal 'in 2,000,000,000 years', CarbonDate::Date.new(year: y + 1500000000, precision: :billion_years).to_s
+    assert_equal '1,000,000,000 years ago', CarbonDate::Date.new(year: y - 1000000000, precision: :billion_years).to_s
+    assert_equal '1,000,000,000 years ago', CarbonDate::Date.new(year: y - 1499900000, precision: :billion_years).to_s
+    assert_equal '2,000,000,000 years ago', CarbonDate::Date.new(year: y - 1500000000, precision: :billion_years).to_s
   end
 
 end

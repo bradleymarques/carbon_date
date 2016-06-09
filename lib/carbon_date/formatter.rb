@@ -92,6 +92,26 @@ module CarbonDate
       coarse_precision(date.year, 10e3.to_i)
     end
 
+    def hundred_thousand_years(date)
+      coarse_precision(date.year, 100e3.to_i)
+    end
+
+    def million_years(date)
+      coarse_precision(date.year, 1e6.to_i)
+    end
+
+    def ten_million_years(date)
+      coarse_precision(date.year, 10e6.to_i)
+    end
+
+    def hundred_million_years(date)
+      coarse_precision(date.year, 100e6.to_i)
+    end
+
+    def billion_years(date)
+      coarse_precision(date.year, 1e9.to_i)
+    end
+
     def coarse_precision(date_year, interval)
 
       date_year = date_year.to_i
@@ -104,7 +124,8 @@ module CarbonDate
       rounded = (year_diff.to_f / interval.to_f).round * interval
       return "in #{number_with_delimiter(rounded.abs)} years" if rounded > 0
       return "#{number_with_delimiter(rounded.abs)} years ago" if rounded < 0
-      nil
+
+      return nil
     end
 
     def number_with_delimiter(n, delim = ',')
