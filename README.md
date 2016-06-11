@@ -14,13 +14,13 @@ gem 'carbon_date'
 
 And then execute:
 
-```
+```ruby
 $ bundle
 ```
 
 Or install it yourself as:
 
-```
+```ruby
 $ gem install carbon_date
 ```
 
@@ -28,7 +28,7 @@ $ gem install carbon_date
 
 ## Creation and Formatting
 
-```
+```ruby
 CarbonDate::Date.new(1914, 07, 28, precision: :month).to_s
 => "July, 1914"
 
@@ -71,7 +71,7 @@ Available precisions:
 
 CarbonDate also supports creation from the ISO8601, with precision:
 
-```
+```ruby
 CarbonDate::Date.iso8601('+0632-06-08T00:00:00Z', 11).to_s
 => "8th June, 632"
 ```
