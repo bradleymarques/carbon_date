@@ -7,113 +7,47 @@ class DateTest < Minitest::Test
   # ==================== Basic initialization ====================
 
   def test_it_can_be_initialized_with_default_fields
-    date = CarbonDate::Date.new()
-    assert date.year
-    assert date.month
-    assert date.day
-    assert date.hour
-    assert date.minute
-    assert date.second
+    assert CarbonDate::Date.new()
   end
 
   def test_it_can_be_initialized_with_second_precision
-    date = CarbonDate::Date.new(2016, 6, 6, 8, 46, 42, precision: :second)
-    assert date.year
-    assert date.month
-    assert date.day
-    assert date.hour
-    assert date.minute
-    assert date.second
+    assert CarbonDate::Date.new(2016, 6, 6, 8, 46, 42, precision: :second)
   end
 
   def test_it_can_be_initialized_with_minute_precision
-    date = CarbonDate::Date.new(2016, 6, 6, 8, 46, precision: :minute)
-    assert date.year
-    assert date.month
-    assert date.day
-    assert date.hour
-    assert date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, 6, 6, 8, 46, precision: :minute)
   end
 
   def test_it_can_be_intitialized_with_hour_precision
-    date = CarbonDate::Date.new(2016, 6, 6, 8, precision: :hour)
-    assert date.year
-    assert date.month
-    assert date.day
-    assert date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, 6, 6, 8, precision: :hour)
   end
 
   def test_it_can_be_intitialized_with_day_precision
-    date = CarbonDate::Date.new(2016, 6, 6, precision: :day)
-    assert date.year
-    assert date.month
-    assert date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, 6, 6, precision: :day)
   end
 
   def test_it_can_be_intitialized_with_month_precision
-    date = CarbonDate::Date.new(2016, 6, precision: :month)
-    assert date.year
-    assert date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, 6, precision: :month)
   end
 
   def test_it_can_be_intitialized_with_year_precision
-    date = CarbonDate::Date.new(2016, precision: :year)
-    assert date.year
-    refute date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, precision: :year)
   end
 
   def test_it_can_be_intitialized_with_decade_precision
-    date = CarbonDate::Date.new(2016, precision: :decade)
-    assert date.year
-    refute date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, precision: :decade)
   end
 
   def test_it_can_be_intitialized_with_century_precision
-    date = CarbonDate::Date.new(2016, precision: :century)
-    assert date.year
-    refute date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, precision: :century)
   end
 
   def test_it_can_be_intitialized_with_millenium_precision
-    date = CarbonDate::Date.new(2016, precision: :millennium)
-    assert date.year
-    refute date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, precision: :millennium)
   end
 
   def test_it_can_be_intitialized_with_billion_years_precision
-    date = CarbonDate::Date.new(2016, precision: :billion_years)
-    assert date.year
-    refute date.month
-    refute date.day
-    refute date.hour
-    refute date.minute
-    refute date.second
+    assert CarbonDate::Date.new(2016, precision: :billion_years)
   end
 
   def test_it_raises_an_error_if_year_is_nil

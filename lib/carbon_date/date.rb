@@ -9,7 +9,17 @@ module CarbonDate
 
     @formatter = CarbonDate::StandardFormatter.new
 
-    class << self; attr_accessor :formatter end
+    class << self
+
+      attr_accessor :formatter
+
+      def is_valid_day?
+
+      end
+
+    end
+
+
 
     ##
     # The precisions available
@@ -35,41 +45,63 @@ module CarbonDate
 
     def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second)
 
-      @precision = PRECISION.find { |p| p[:symbol] == precision }
-      raise ArgumentError.new "Invalid precision" unless @precision
+      self.precision = precision
+      self.set_date(year, month, day)
 
-      raise ArgumentError.new "Invalid year" if ((year.nil?) || (year == 0))
-      @year = year.to_i
 
-      if @precision[:level] >= 10
-        raise ArgumentError.new "Invalid month #{month}" unless (1..12).include? month
-        @month = month
-      end
 
-      if @precision[:level] >= 11
-        begin
-          ::Date.new(@year, @month, day)
-        rescue StandardError => e
-          raise e
-        end
-        @day = day
-      end
 
-      if @precision[:level] >= 12
-        raise ArgumentError.new "Invalid hour #{hour}" unless (0..23).include? hour
-        @hour = hour
-      end
+      raise ArgumentError.new "Invalid hour #{hour}" unless (0..23).include? hour
+      @hour = hour
 
-      if @precision[:level] >= 13
-        raise ArgumentError.new "Invalid minute #{minute}" unless (0..60).include? minute
-        @minute = minute
-      end
+      raise ArgumentError.new "Invalid minute #{minute}" unless (0..60).include? minute
+      @minute = minute
 
-      if @precision[:level] == 14
-        raise ArgumentError.new "Invalid second #{second}" unless (0..60).include? second
-        @second = second
-      end
+      raise ArgumentError.new "Invalid second #{second}" unless (0..60).include? second
+      @second = second
+    end
 
+    ##
+    # Sets the precision
+    #
+    # Raises ArgumentError if invalid symbol
+    def precision=(value)
+      p = PRECISION.find { |p| p[:symbol] == value }
+      raise ArgumentError.new "Invalid precision #{value}" unless p
+      @precision = p
+    end
+
+    ##
+    #
+    def set_date(year, month, day)
+      ::Date.new(year, month, day) # Raises ArgumentError if invalid date
+      @year = year
+      @month = month
+      @day = @day
+    end
+
+    ##
+    # Sets the year. Calls set_date() to ensure atomicity
+    def year=(value)
+      set_date(value, @month, @day)
+    end
+
+    ##
+    # Sets the month. Calls set_date() to ensure atomicity
+    #
+    # Raises ArgumentError if:
+    # - value is not in (1..12)
+    def month=(value)
+      set_date(@year, value, @day)
+    end
+
+    ##
+    # Sets the month. Calls set_date() to ensure atomicity
+    #
+    # Raises ArgumentError if:
+    # - value is not in (1..12)
+    def day=(value)
+      set_date(@year, @month, value)
     end
 
     ##
@@ -96,6 +128,8 @@ module CarbonDate
       raise NotImplementedError.new
     end
 
+    ##
+    # Converts the CarbonDate::Date into a standard DateTime object
     def to_datetime
       raise NotImplementedError.new
     end
