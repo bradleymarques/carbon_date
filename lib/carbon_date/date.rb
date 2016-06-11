@@ -44,21 +44,11 @@ module CarbonDate
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
 
     def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second)
-
       self.precision = precision
       self.set_date(year, month, day)
-
-
-
-
-      raise ArgumentError.new "Invalid hour #{hour}" unless (0..23).include? hour
-      @hour = hour
-
-      raise ArgumentError.new "Invalid minute #{minute}" unless (0..60).include? minute
-      @minute = minute
-
-      raise ArgumentError.new "Invalid second #{second}" unless (0..60).include? second
-      @second = second
+      self.hour = hour
+      self.minute = minute
+      self.second = second
     end
 
     ##
@@ -114,6 +104,33 @@ module CarbonDate
     # - value is not in (1..12)
     def day=(value)
       set_date(@year, @month, value)
+    end
+
+    ##
+    # Sets the hour with validation
+    #
+    # Raises ArgumentError unless in the range (0..23)
+    def hour=(value)
+      raise ArgumentError.new "Invalid hour #{value}" unless (0..23).include? value
+      @hour = value
+    end
+
+    ##
+    # Sets the minute with validation
+    #
+    # Raises ArgumentError unless in the range (0..60)
+    def minute=(value)
+      raise ArgumentError.new "Invalid minute #{value}" unless (0..60).include? value
+      @minute = value
+    end
+
+    ##
+    # Sets the second with validation
+    #
+    # Raises ArgumentError unless in the range (0..60)
+    def second=(value)
+      raise ArgumentError.new "Invalid second #{value}" unless (0..60).include? value
+      @second = value
     end
 
     ##
