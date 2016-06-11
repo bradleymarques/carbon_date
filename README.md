@@ -29,20 +29,68 @@ $ gem install carbon_date
 ## Creation and Formatting
 
 ```
-date_1 = CarbonDate::Date.new(1914, 07, 28, precision: month)
-date_1.to_s
+CarbonDate::Date.new(1914, 07, 28, precision: :month).to_s
 => "July, 1914"
 
-date_2 = CarbonDate::Date.new(1914, 07, 28, precision: day)
-date_2.to_s
+CarbonDate::Date.new(1914, 07, 28, precision: :day).to_s
 => "28th July, 1914"
 
-date_3 = CarbonDate::Date.new(1914, 07, 28, precision: year)
-date_2.to_s
+CarbonDate::Date.new(1914, 07, 28, precision: :year).to_s
 => "1914"
 
+CarbonDate::Date.new(2017, 12, 01, 16, 45, 12, precision: :second).to_s
+=> "16:45:12 1st December, 2017"
+
+CarbonDate::Date.new(-44, 03, 15, precision: :day).to_s
+=> "15th March, 44 BCE"
+
+CarbonDate::Date.new(-4.6e9, precision: :hundred_million_years).to_s
+=> "4,600,000,000 years ago"
 
 ```
+
+Available precisions:
+
+- `:second`
+- `:minute`
+- `:hour`
+- `:day`
+- `:month`
+- `:year`
+- `:decade`
+- `:century`
+- `:millennium`
+- `:ten_thousand_years`
+- `:hundred_thousand_years`
+- `:million_years`
+- `:ten_million_years`
+- `:hundred_million_years`
+- `:billion_years`
+
+## Creation from ISO8601 Timestamp with precision
+
+CarbonDate also supports creation from the ISO8601, with precision:
+
+```
+CarbonDate::Date.iso8601('+0632-06-08T00:00:00Z', 11).to_s
+=> "8th June, 632"
+```
+
+## Custom Formatting
+
+If you don't like the way `to_s` formats the dates, create your own custom formatter:
+
+```
+class MyCustomFormatter < CarbonDate::Formatter
+  def year(date)
+    # ...
+  end
+
+  # ...
+end
+```
+
+See `standard_formatter.rb` for an example.
 
 ## Contributing
 

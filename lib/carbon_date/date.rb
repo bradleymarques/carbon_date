@@ -77,7 +77,7 @@ module CarbonDate
       p = PRECISION.find { |p| p[:level] == precision_level}
       raise ArgumentError.new("Invalid precision level #{precision_level}") unless p
       d = string.split('T').map { |x| x.split /[-:]/ }.flatten.map(&:to_i)
-      CarbonDate::Date.new(year: d[0], month: d[1], day: d[2], hour: d[3], minute: d[4], second: d[5], precision: p[:symbol])
+      CarbonDate::Date.new(d[0], d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
     end
 
     def to_s
