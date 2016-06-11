@@ -2,7 +2,7 @@
 
 CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.
 
-Dates are modelled according to the Gregorian Calendar.
+Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
 ## Installation
 
@@ -26,7 +26,23 @@ $ gem install carbon_date
 
 ## Usage
 
-TODO: Write usage instructions here
+## Creation and Formatting
+
+```
+date_1 = CarbonDate::Date.new(1914, 07, 28, precision: month)
+date_1.to_s
+=> "July, 1914"
+
+date_2 = CarbonDate::Date.new(1914, 07, 28, precision: day)
+date_2.to_s
+=> "28th July, 1914"
+
+date_3 = CarbonDate::Date.new(1914, 07, 28, precision: year)
+date_2.to_s
+=> "1914"
+
+
+```
 
 ## Contributing
 

@@ -25,7 +25,7 @@ module CarbonDate
 
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
 
-    def initialize(year: 1970, month: 1, day: 1, hour: 0, minute: 0, second: 0, precision: :second, formatter: StandardFormatter.new)
+    def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second, formatter: StandardFormatter.new)
 
       @precision = PRECISION.find { |p| p[:symbol] == precision }
       raise ArgumentError.new "Invalid precision" unless @precision
