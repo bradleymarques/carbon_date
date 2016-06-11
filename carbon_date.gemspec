@@ -27,14 +27,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'minitest-display'
-  spec.add_development_dependency 'minitest-reporters'
-  spec.add_development_dependency 'm'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rdoc'
+  spec.add_development_dependency 'bundler', '~> 1.10'
+  spec.add_development_dependency 'rake', '>= 11.1.2', '~> 11.1.2'
+  spec.add_development_dependency 'simplecov', '>= 0.11.2', '~> 0.11.2'
+  spec.add_development_dependency 'minitest-display', '>= 0.3.1', '~> 0.3.1'
+  spec.add_development_dependency 'minitest-reporters', '~> 1.1.9', '>= 1.1.9'
+  spec.add_development_dependency 'm', '>= 1.5.0', '~> 1.5.0'
+  spec.add_development_dependency 'pry', '~> 0.10.3', '>= 0.10.3'
+  spec.add_development_dependency 'rdoc', '~> 4.4.2', '>= 4.4.2'
 
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'activesupport', '~> 4.2.6', '>= 4.2.6'
 end
