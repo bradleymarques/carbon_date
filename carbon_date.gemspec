@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest-reporters', '~> 1.1.9', '>= 1.1.9'
   spec.add_development_dependency 'm', '>= 1.5.0', '~> 1.5.0'
   spec.add_development_dependency 'pry', '~> 0.10.3', '>= 0.10.3'
-  spec.add_development_dependency 'rdoc', '~> 4.4.2', '>= 4.4.2'
+  spec.add_development_dependency 'rdoc', '~> 4.2.2', '>= 4.2.2'
 
   spec.add_dependency 'activesupport', '~> 4.2.6', '>= 4.2.6'
 end

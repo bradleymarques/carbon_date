@@ -29,6 +29,9 @@ $ gem install carbon_date
 ## Creation and Formatting
 
 ```ruby
+CarbonDate::Date.new(2017, 12, 01, 16, 45, 12, precision: :second).to_s
+=> "16:45:12 1st December, 2017"
+
 CarbonDate::Date.new(1914, 07, 28, precision: :month).to_s
 => "July, 1914"
 
@@ -38,8 +41,11 @@ CarbonDate::Date.new(1914, 07, 28, precision: :day).to_s
 CarbonDate::Date.new(1914, 07, 28, precision: :year).to_s
 => "1914"
 
-CarbonDate::Date.new(2017, 12, 01, 16, 45, 12, precision: :second).to_s
-=> "16:45:12 1st December, 2017"
+CarbonDate::Date.new(1914, 07, 28, precision: :year).to_s
+=> "1914"
+
+CarbonDate::Date.new(1914, 07, 28, precision: :decade).to_s
+=> "1910s"
 
 CarbonDate::Date.new(-44, 03, 15, precision: :day).to_s
 => "15th March, 44 BCE"

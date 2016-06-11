@@ -1,10 +1,18 @@
 require 'date'
-require 'carbon_date/formatter'
+require 'carbon_date/standard_formatter'
 
 module CarbonDate
 
+  ##
+  # A date with a precision
   class Date
 
+    @formatter = CarbonDate::StandardFormatter.new
+
+    class << self; attr_accessor :formatter end
+
+    ##
+    # The precisions available
     PRECISION = [
       {symbol: :second, level: 14, name: 'second'},
       {symbol: :minute, level: 13, name: 'minute'},
@@ -25,7 +33,7 @@ module CarbonDate
 
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
 
-    def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second, formatter: StandardFormatter.new)
+    def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second)
 
       @precision = PRECISION.find { |p| p[:symbol] == precision }
       raise ArgumentError.new "Invalid precision" unless @precision
@@ -40,7 +48,7 @@ module CarbonDate
 
       if @precision[:level] >= 11
         begin
-          ::Date.new(@year, @month, day) # Need to scope to top-level namespace
+          ::Date.new(@year, @month, day)
         rescue StandardError => e
           raise e
         end
@@ -62,8 +70,6 @@ module CarbonDate
         @second = second
       end
 
-      @formatter = formatter
-
     end
 
     ##
@@ -80,10 +86,19 @@ module CarbonDate
       CarbonDate::Date.new(d[0], d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
     end
 
+    ##
+    # Prints a human-readable version of the date, using a Formatter
     def to_s
-      @formatter.date_to_string(self)
+      CarbonDate::Date.formatter.date_to_string(self)
+    end
+
+    def to_date
+      raise NotImplementedError.new
+    end
+
+    def to_datetime
+      raise NotImplementedError.new
     end
 
   end
-
 end
