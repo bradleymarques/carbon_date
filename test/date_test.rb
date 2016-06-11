@@ -99,15 +99,15 @@ class DateTest < Minitest::Test
   # ==================== Conversions and other initializations ====================
 
   def test_it_can_be_converted_to_a_ruby_datetime_object
-    flunk 'Not yet implemented'
+    skip 'Not yet implemented'
   end
 
   def test_it_can_be_converted_to_a_ruby_date_object
-    flunk 'Not yet implemented'
+    skip 'Not yet implemented'
   end
 
   def test_it_can_be_initialized_with_iso8601_timestamp
-    flunk 'Not yet implemented'
+    skip 'Not yet implemented'
   end
 
 end

@@ -29,7 +29,7 @@ class StandardFromatterTest < Minitest::Test
   end
 
   def test_it_can_be_formatted_with_hour_precision
-    flunk 'Not implemented'
+    skip 'Not yet implemented'
   end
 
   def test_it_can_be_formatted_with_minute_precision
