@@ -99,6 +99,12 @@ end
 
 See `standard_formatter.rb` for an example.
 
+Then to set your custom formatter, simply do:
+```ruby
+CarbonDate::Date.formatter = MyCustomFormatter.new
+# All subsequent dates will be formatted using your custom formatter
+```
+
 ## Contributing
 
 Please feel free to contribute to this gem:
