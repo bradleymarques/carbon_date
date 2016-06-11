@@ -69,7 +69,7 @@ Available precisions:
 
 ## Creation from ISO8601 Timestamp with precision
 
-CarbonDate also supports creation from the ISO8601, with precision:
+CarbonDate also supports creation from the ISO8601, with precision, such as the format of dates used on [Wikidata](www.wikidata.org)
 
 ```ruby
 CarbonDate::Date.iso8601('+0632-06-08T00:00:00Z', 11).to_s
@@ -80,8 +80,9 @@ CarbonDate::Date.iso8601('+0632-06-08T00:00:00Z', 11).to_s
 
 If you don't like the way `to_s` formats the dates, create your own custom formatter:
 
-```
+```ruby
 class MyCustomFormatter < CarbonDate::Formatter
+
   def year(date)
     # ...
   end
@@ -94,7 +95,11 @@ See `standard_formatter.rb` for an example.
 
 ## Contributing
 
-Please feel free to contribute to this gem.
+Please feel free to contribute to this gem:
+
++ fork
++ create your own branch
++ submit pull request
 
 ## License
 
