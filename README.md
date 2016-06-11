@@ -41,11 +41,11 @@ CarbonDate::Date.new(1914, 07, 28, precision: :day).to_s
 CarbonDate::Date.new(1914, 07, 28, precision: :year).to_s
 => "1914"
 
-CarbonDate::Date.new(1914, 07, 28, precision: :year).to_s
-=> "1914"
-
 CarbonDate::Date.new(1914, 07, 28, precision: :decade).to_s
 => "1910s"
+
+CarbonDate::Date.new(1914, 07, 28, precision: :century).to_s
+=> "20th century"
 
 CarbonDate::Date.new(-44, 03, 15, precision: :day).to_s
 => "15th March, 44 BCE"
