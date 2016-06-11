@@ -10,16 +10,8 @@ module CarbonDate
     @formatter = CarbonDate::StandardFormatter.new
 
     class << self
-
       attr_accessor :formatter
-
-      def is_valid_day?
-
-      end
-
     end
-
-
 
     ##
     # The precisions available
@@ -76,10 +68,10 @@ module CarbonDate
         raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}")
       end
 
-
       @year = year.to_i
       @month = month
       @day = day
+
     end
 
     ##
@@ -153,12 +145,14 @@ module CarbonDate
       CarbonDate::Date.formatter.date_to_string(self)
     end
 
+    ##
+    # Convert to a standard Ruby Date object
     def to_date
       raise NotImplementedError.new
     end
 
     ##
-    # Converts the CarbonDate::Date into a standard DateTime object
+    # Convert into a standard Ruby DateTime object
     def to_datetime
       raise NotImplementedError.new
     end
