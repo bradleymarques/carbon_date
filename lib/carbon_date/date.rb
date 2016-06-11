@@ -48,7 +48,7 @@ module CarbonDate
     #
     # Raises ArgumentError if invalid symbol
     def precision=(value)
-      p = PRECISION.find { |p| p[:symbol] == value }
+      p = PRECISION.find { |x| x[:symbol] == value }
       raise ArgumentError.new "Invalid precision #{value}" unless p
       @precision = p
     end
