@@ -99,7 +99,10 @@ class DateTest < Minitest::Test
   # ==================== Conversions and other initializations ====================
 
   def test_it_can_be_converted_to_a_ruby_datetime_object
-    skip 'Not yet implemented'
+    assert_equal ::Date.new(2016, 1, 1), CarbonDate::Date.new(2016, precision: :year).to_date
+    assert_equal ::Date.new(2016, 12, 1), CarbonDate::Date.new(2016, 12, precision: :month).to_date
+    assert_equal ::Date.new(2016, 12, 12), CarbonDate::Date.new(2016, 12, 12, precision: :day).to_date
+    assert_equal ::Date.new(-44, 3, 15), CarbonDate::Date.new(-44, 3, 15, precision: :day).to_date
   end
 
   def test_it_can_be_converted_to_a_ruby_date_object

@@ -148,7 +148,7 @@ module CarbonDate
     ##
     # Convert to a standard Ruby Date object
     def to_date
-      raise NotImplementedError.new
+      ::Date.new(@year, @month, @day)
     end
 
     ##
