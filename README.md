@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/carbon_date.svg)](https://badge.fury.io/rb/carbon_date)
+
 # CarbonDate
 
 CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.  Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar), and can have the following precision:
