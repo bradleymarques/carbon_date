@@ -1,11 +1,11 @@
+require 'simplecov'
 require 'coveralls'
 Coveralls.wear!
 
-# require 'simplecov'
-# SimpleCov.start do
-#   add_filter "/test/"
-#   add_filter "/lib/carbon_date/version.rb"
-# end
+SimpleCov.start do
+  add_filter "/test/"
+  add_filter "/lib/carbon_date/version.rb"
+end
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'carbon_date'
