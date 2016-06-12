@@ -79,13 +79,13 @@ module CarbonDate
     end
 
     ##
-    # Sets the year. Calls set_date() to ensure atomicity
+    # Sets the year. Calls set_date() to ensure atomicity.
     def year=(value)
       set_date(value, @month, @day)
     end
 
     ##
-    # Sets the month. Calls set_date() to ensure atomicity
+    # Sets the month. Calls set_date() to ensure atomicity.
     #
     # Raises ArgumentError if:
     # - value is not in (1..12)
@@ -94,7 +94,7 @@ module CarbonDate
     end
 
     ##
-    # Sets the month. Calls set_date() to ensure atomicity
+    # Sets the month. Calls set_date() to ensure atomicity.
     #
     # Raises ArgumentError if:
     # - value is not in (1..12)
@@ -175,6 +175,7 @@ module CarbonDate
     #
     # Defers to DateTime#==
     def ==(another_date)
+      return false if self.precision != another_date.precision
       self.to_datetime == another_date.to_datetime
     end
 
