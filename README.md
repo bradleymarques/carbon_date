@@ -3,23 +3,23 @@
 
 # CarbonDate
 
-CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.  Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar), and can have the following precision:
+CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.  Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar), and can have one of the following precisions:
 
-0. billion_years
-1. hundred_million_years
-2. ten_million_years
-3. million_years
-4. hundred_thousand_years
-5. ten_thousand_years
-6. millennium
-7. century
-8. decade
-9. year
-10. month
-11. day
-12. hour
-13. minute
-14. second
++ billion years;
++ hundred million years;
++ ten million years;
++ million years;
++ hundred thousand years;
++ ten thousand years;
++ millennium;
++ century;
++ decade;
++ year;
++ month;
++ day;
++ hour;
++ minute;
++ or second.
 
 ## Installation
 
