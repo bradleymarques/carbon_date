@@ -33,7 +33,10 @@ class StandardFromatterTest < Minitest::Test
   end
 
   def test_it_can_be_formatted_with_hour_precision
-    skip 'Not yet implemented'
+    assert_equal "20:00 1st January, 1970", CarbonDate::Date.new(1970, 1, 1, 20, 00, precision: :hour).to_s
+    assert_equal "20:00 1st January, 1970", CarbonDate::Date.new(1970, 1, 1, 20, 29, precision: :hour).to_s
+    assert_equal "21:00 1st January, 1970", CarbonDate::Date.new(1970, 1, 1, 20, 30, precision: :hour).to_s
+    assert_equal "21:00 1st January, 1970", CarbonDate::Date.new(1970, 1, 1, 20, 59, precision: :hour).to_s
   end
 
   def test_it_can_be_formatted_with_minute_precision

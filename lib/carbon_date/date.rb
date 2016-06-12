@@ -67,7 +67,7 @@ module CarbonDate
       raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}") if (year.nil? || year == 0)
 
       begin
-        ::Date.new(year, month, day) # Raises ArgumentError if invalid date
+        ::Date.new(year, month, day)
       rescue ArgumentError
         raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}")
       end

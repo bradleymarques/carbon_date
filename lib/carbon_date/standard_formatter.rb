@@ -17,47 +17,49 @@ module CarbonDate
     def year(date)
       y = date.year.abs.to_s
       return [y, BCE_SUFFIX].join(' ') if (date.year <= -1)
-      return y
+      y
     end
 
     def month(date)
-      return [MONTHS[date.month - 1], year(date)].join(', ')
+      [MONTHS[date.month - 1], year(date)].join(', ')
     end
 
     def day(date)
-      return [date.day.ordinalize.to_s, month(date)].join(' ')
+      [date.day.ordinalize.to_s, month(date)].join(' ')
     end
 
     def hour(date)
-      "THIS ONE IS TRICKY"
+      h = date.minute >= 30 ? date.hour + 1 : date.hour
+      time = [pad(h.to_s), '00'].join(':')
+      [time, day(date)].join(' ')
     end
 
     def minute(date)
       time = [pad(date.hour.to_s), pad(date.minute.to_s)].join(':')
-      return [time, day(date)].join(' ')
+      [time, day(date)].join(' ')
     end
 
     def second(date)
       time = [pad(date.hour.to_s), pad(date.minute.to_s), pad(date.second.to_s)].join(':')
-      return [time, day(date)].join(' ')
+      [time, day(date)].join(' ')
     end
 
     def decade(date)
       d = ((date.year.abs.to_i / 10) * 10).to_s + 's'
       return [d, BCE_SUFFIX].join(' ') if (date.year <= -1)
-      return d
+      d
     end
 
     def century(date)
       c = ((date.year.abs.to_i / 100) + 1).ordinalize + ' century'
       return [c, BCE_SUFFIX].join(' ') if (date.year <= -1)
-      return c
+      c
     end
 
     def millennium(date)
       m = ((date.year.abs.to_i / 1000) + 1).ordinalize + ' millennium'
       return [m, BCE_SUFFIX].join(' ') if (date.year <= -1)
-      return m
+      m
     end
 
     def ten_thousand_years(date)
@@ -97,7 +99,7 @@ module CarbonDate
       return "in #{number_with_delimiter(rounded.abs)} years" if rounded > 0
       return "#{number_with_delimiter(rounded.abs)} years ago" if rounded < 0
 
-      return nil
+      nil
     end
 
     def number_with_delimiter(n, delim = ',')
@@ -105,7 +107,7 @@ module CarbonDate
     end
 
     def pad(s)
-      return s.rjust(2, '0')
+      s.rjust(2, '0')
     end
 
   end
