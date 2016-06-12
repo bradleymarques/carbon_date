@@ -10,6 +10,11 @@ class StandardFromatterTest < Minitest::Test
     CarbonDate::Date.formatter = CarbonDate::StandardFormatter.new
   end
 
+  def test_it_raises_standard_error_if_date_has_invalid_precision
+    fake_date = stub(:precision => {symbol: :astronomical_years, level: -1})
+    assert_raises(StandardError) { CarbonDate::Formatter.new().date_to_string(fake_date) }
+  end
+
   def test_it_can_be_formatted_with_year_precision
     assert_equal '2016', CarbonDate::Date.new(2016, precision: :year).to_s
     assert_equal '4600000', CarbonDate::Date.new(4.6e6, precision: :year).to_s
