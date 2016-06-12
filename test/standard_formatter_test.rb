@@ -6,6 +6,10 @@ include CarbonDate
 # Tests the to_s method of CarbonDate::Date with various precisions
 class StandardFromatterTest < Minitest::Test
 
+  def setup
+    CarbonDate::Date.formatter = CarbonDate::StandardFormatter.new
+  end
+
   def test_it_can_be_formatted_with_year_precision
     assert_equal '2016', CarbonDate::Date.new(2016, precision: :year).to_s
     assert_equal '4600000', CarbonDate::Date.new(4.6e6, precision: :year).to_s
