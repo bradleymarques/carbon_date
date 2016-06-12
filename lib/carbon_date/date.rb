@@ -36,6 +36,8 @@ module CarbonDate
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
 
     def initialize(year = 1970, month = 1, day = 1, hour = 0, minute = 0, second = 0, precision: :second)
+      month = 1 if month == 0
+      day = 1 if day == 0
       self.precision = precision
       self.set_date(year, month, day)
       self.hour = hour
@@ -135,8 +137,17 @@ module CarbonDate
     def self.iso8601(string, precision_level)
       p = PRECISION.find { |p| p[:level] == precision_level}
       raise ArgumentError.new("Invalid precision level #{precision_level}") unless p
+      # If there is an initial '-' symbol on the year, it needs to be treateded differenty than the other '-'.
+      # Example: -0500-01-01 is the 1st January 500 BCE
+      if string[0] == '-'
+        string = string[1..(string.length - 1)] # Drop the initial '-'
+        bce = true
+      else
+        bce = false
+      end
       d = string.split('T').map { |x| x.split /[-:]/ }.flatten.map(&:to_i)
-      CarbonDate::Date.new(d[0], d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
+      year = bce ? -d[0] : d[0]
+      CarbonDate::Date.new(year, d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
     end
 
     ##
@@ -154,7 +165,11 @@ module CarbonDate
     ##
     # Convert into a standard Ruby DateTime object
     def to_datetime
-      raise NotImplementedError.new
+      ::DateTime.new(@year, @month, @day, @hour, @minute, @second)
+    end
+
+    def ==(another_date)
+      self.to_datetime == another_date.to_datetime
     end
 
   end

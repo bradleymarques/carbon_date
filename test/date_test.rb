@@ -98,19 +98,35 @@ class DateTest < Minitest::Test
 
   # ==================== Conversions and other initializations ====================
 
-  def test_it_can_be_converted_to_a_ruby_datetime_object
+  def test_it_can_be_converted_to_a_ruby_date_object
     assert_equal ::Date.new(2016, 1, 1), CarbonDate::Date.new(2016, precision: :year).to_date
     assert_equal ::Date.new(2016, 12, 1), CarbonDate::Date.new(2016, 12, precision: :month).to_date
     assert_equal ::Date.new(2016, 12, 12), CarbonDate::Date.new(2016, 12, 12, precision: :day).to_date
     assert_equal ::Date.new(-44, 3, 15), CarbonDate::Date.new(-44, 3, 15, precision: :day).to_date
   end
 
-  def test_it_can_be_converted_to_a_ruby_date_object
-    skip 'Not yet implemented'
+  def test_it_can_be_converted_to_a_ruby_datetime_object
+    assert_equal ::DateTime.new(2016, 6, 12, 11, 26, 43), CarbonDate::Date.new(2016, 6, 12, 11, 26, 43, precision: :second).to_datetime
+    assert_equal ::DateTime.new(2016, 6, 12, 11, 26), CarbonDate::Date.new(2016, 6, 12, 11, 26, precision: :minute).to_datetime
+    assert_equal ::DateTime.new(2016, 6, 12, 11), CarbonDate::Date.new(2016, 6, 12, 11, precision: :hour).to_datetime
   end
 
   def test_it_can_be_initialized_with_iso8601_timestamp
-    skip 'Not yet implemented'
+    assert_equal CarbonDate::Date.iso8601('+2016-05-23T15:45:13Z', 14), CarbonDate::Date.new(2016, 05, 23, 15, 45, 13, precision: :second)
+    assert_equal CarbonDate::Date.iso8601('+2016-05-23T15:45:00Z', 13), CarbonDate::Date.new(2016, 05, 23, 15, 45, precision: :minute)
+    assert_equal CarbonDate::Date.iso8601('+2016-05-23T15:00:00Z', 12), CarbonDate::Date.new(2016, 05, 23, 15, precision: :hour)
+    assert_equal CarbonDate::Date.iso8601('+2016-05-23T00:00:00Z', 11), CarbonDate::Date.new(2016, 05, 23, precision: :day)
+    assert_equal CarbonDate::Date.iso8601('+2016-05-00T00:00:00Z', 10), CarbonDate::Date.new(2016, 05, precision: :month)
+    assert_equal CarbonDate::Date.iso8601('+1989-00-00T00:00:00Z', 9), CarbonDate::Date.new(1989 , precision: :year)
+    assert_equal CarbonDate::Date.iso8601('+2000-00-00T00:00:00Z', 8), CarbonDate::Date.new(2000 , precision: :decade)
+    assert_equal CarbonDate::Date.iso8601('+2000-00-00T00:00:00Z', 7), CarbonDate::Date.new(2000 , precision: :century)
+    assert_equal CarbonDate::Date.iso8601('-0500-00-00T00:00:00Z', 6), CarbonDate::Date.new(-500 , precision: :millennium)
+    assert_equal CarbonDate::Date.iso8601('-0500-00-00T00:00:00Z', 5), CarbonDate::Date.new(-500 , precision: :ten_thousand_years)
+    assert_equal CarbonDate::Date.iso8601('-0500-00-00T00:00:00Z', 4), CarbonDate::Date.new(-500 , precision: :hundred_thousand_years)
+    assert_equal CarbonDate::Date.iso8601('-0500-00-00T00:00:00Z', 3), CarbonDate::Date.new(-500 , precision: :million_years)
+    assert_equal CarbonDate::Date.iso8601('-0500-00-00T00:00:00Z', 2), CarbonDate::Date.new(-500 , precision: :ten_million_years)
+    assert_equal CarbonDate::Date.iso8601('+0200-00-00T00:00:00Z', 1), CarbonDate::Date.new(200 , precision: :hundred_million_years)
+    assert_equal CarbonDate::Date.iso8601('+0200-00-00T00:00:00Z', 0), CarbonDate::Date.new(200 , precision: :billion_years)
   end
 
 end
