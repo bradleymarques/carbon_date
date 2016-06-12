@@ -9,3 +9,4 @@
 /tmp/
 /test/html_reports/
 /*.gem
+/.coveralls.yml
