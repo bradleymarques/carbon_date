@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Bradley Marques"]
   spec.email         = ["bradleyrcmarques@gmail.com"]
 
-  spec.summary       = %q{(Pre)historical dates in Ruby}
-  spec.description   = %q{Models (pre)historical dates with (im)precision in Ruby}
+  spec.summary       = %q{Models (pre)historical dates with (im)precision in Ruby}
+  #spec.description   = %q{Models (pre)historical dates with (im)precision in Ruby}
   spec.homepage      = "https://github.com/bradleymarques/carbon_date"
   spec.license       = "MIT"
 
