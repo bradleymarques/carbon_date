@@ -96,6 +96,28 @@ class DateTest < Minitest::Test
 
   # TODO: Write tests to validate time
 
+  # ==================== Operators  ====================
+
+  def test_dates_with_exact_attributes_are_equal
+    assert_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second)
+  end
+
+  def test_dates_with_different_attributes_are_not_equal
+    refute_equal CarbonDate::Date.new(1913, 4, 5, 9, 43, 8, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second)
+  end
+
+  def test_dates_with_same_attributes_but_different_precisions_are_unequal
+    assert_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
+  end
+
+  def test_an_earlier_date_is_less_than_a_later_date
+    assert CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :second) <= CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
+  end
+
+  def test_a_later_date_is_greater_than_an_earlier_date
+    assert CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :second) >= CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :minute)
+  end
+
   # ==================== Conversions and other initializations ====================
 
   def test_it_can_be_converted_to_a_ruby_date_object

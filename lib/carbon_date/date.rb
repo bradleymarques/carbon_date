@@ -15,22 +15,24 @@ module CarbonDate
 
     ##
     # The precisions available
+    #
+    # TODO: Consider refactoring into a simple array of symbols, since level could be replaced by the index in the array
     PRECISION = [
-      {symbol: :second, level: 14, name: 'second'},
-      {symbol: :minute, level: 13, name: 'minute'},
-      {symbol: :hour, level: 12, name: 'hour'},
-      {symbol: :day, level: 11, name: 'day'},
-      {symbol: :month, level: 10, name: 'month'},
-      {symbol: :year, level: 9,  name: 'year'},
-      {symbol: :decade, level: 8,  name: 'decade'},
-      {symbol: :century, level: 7,  name: 'century'},
-      {symbol: :millennium, level: 6,  name: 'millennium'},
-      {symbol: :ten_thousand_years, level: 5,  name: 'ten thousand years'},
-      {symbol: :hundred_thousand_years, level: 4, name: 'hundred thousand years'},
-      {symbol: :million_years, level: 3, name: 'million years'},
-      {symbol: :ten_million_years, level: 2, name: 'ten million years'},
-      {symbol: :hundred_million_years, level: 1, name: 'hundred million years'},
-      {symbol: :billion_years, level: 0, name: 'billion years'}
+      {symbol: :second, level: 14},
+      {symbol: :minute, level: 13},
+      {symbol: :hour, level: 12},
+      {symbol: :day, level: 11},
+      {symbol: :month, level: 10},
+      {symbol: :year, level: 9,},
+      {symbol: :decade, level: 8,},
+      {symbol: :century, level: 7,},
+      {symbol: :millennium, level: 6,},
+      {symbol: :ten_thousand_years, level: 5,},
+      {symbol: :hundred_thousand_years, level: 4},
+      {symbol: :million_years, level: 3},
+      {symbol: :ten_million_years, level: 2},
+      {symbol: :hundred_million_years, level: 1},
+      {symbol: :billion_years, level: 0}
     ]
 
     attr_reader :precision, :year, :month, :day, :hour, :minute, :second
@@ -168,6 +170,10 @@ module CarbonDate
       ::DateTime.new(@year, @month, @day, @hour, @minute, @second)
     end
 
+    ##
+    # Checks if two CarbonDate::Dates are equal
+    #
+    # Defers to DateTime#==
     def ==(another_date)
       self.to_datetime == another_date.to_datetime
     end
