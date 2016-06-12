@@ -170,13 +170,17 @@ module CarbonDate
       ::DateTime.new(@year, @month, @day, @hour, @minute, @second)
     end
 
-    ##
-    # Checks if two CarbonDate::Dates are equal
-    #
-    # Defers to DateTime#==
     def ==(another_date)
       return false if self.precision != another_date.precision
       self.to_datetime == another_date.to_datetime
+    end
+
+    def <=(another_date)
+      self.to_datetime <= another_date.to_datetime
+    end
+
+    def >=(another_date)
+      self.to_datetime <= another_date.to_datetime
     end
 
   end
