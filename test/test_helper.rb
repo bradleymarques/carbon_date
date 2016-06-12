@@ -11,6 +11,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/display'
 require 'minitest/reporters'
+require 'mocha/mini_test'
 
 MiniTest::Display.options = {
   suite_names: true,
