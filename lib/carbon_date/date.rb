@@ -137,7 +137,7 @@ module CarbonDate
     # +string+ -> the iso8601 datetime in the form +1989-03-23T23:11:08Z
     # +precision_level+ -> an integer between 0 and 14 (see CarbonDate::Date::PRECISION)
     def self.iso8601(string, precision_level)
-      p = PRECISION.find { |p| p[:level] == precision_level}
+      p = PRECISION.find { |x| x[:level] == precision_level}
       raise ArgumentError.new("Invalid precision level #{precision_level}") unless p
       # If there is an initial '-' symbol on the year, it needs to be treateded differenty than the other '-'.
       # Example: -0500-01-01 is the 1st January 500 BCE
@@ -147,7 +147,7 @@ module CarbonDate
       else
         bce = false
       end
-      d = string.split('T').map { |x| x.split /[-:]/ }.flatten.map(&:to_i)
+      d = string.split('T').map { |x| x.split(/[-:]/) }.flatten.map(&:to_i)
       year = bce ? -d[0] : d[0]
       CarbonDate::Date.new(year, d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
     end
