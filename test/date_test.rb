@@ -99,23 +99,31 @@ class DateTest < Minitest::Test
   # ==================== Operators  ====================
 
   def test_dates_with_exact_attributes_are_equal
-    assert_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second)
+    assert_equal CarbonDate::Date.new(1988, 7, 11, 6, 43, 3, precision: :second), CarbonDate::Date.new(1988, 7, 11, 6, 43, 3, precision: :second)
   end
 
   def test_dates_with_different_attributes_are_not_equal
-    refute_equal CarbonDate::Date.new(1913, 4, 5, 9, 43, 8, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second)
+    refute_equal CarbonDate::Date.new(1999, precision: :year), CarbonDate::Date.new(2000, precision: :year)
   end
 
   def test_dates_with_same_attributes_but_different_precisions_are_unequal
-    refute_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
+    refute_equal CarbonDate::Date.new(1914, precision: :year), CarbonDate::Date.new(1914, precision: :decade)
   end
 
   def test_an_earlier_date_is_less_than_a_later_date
-    assert CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :second) <= CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
+    assert CarbonDate::Date.new(1999, precision: :year) <= CarbonDate::Date.new(2000, precision: :year)
+  end
+
+  def test_an_earlier_date_is_not_greater_than_a_later_date
+    refute CarbonDate::Date.new(1999, precision: :year) >= CarbonDate::Date.new(2000, precision: :year)
   end
 
   def test_a_later_date_is_greater_than_an_earlier_date
-    assert CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :second) >= CarbonDate::Date.new(-1914, 5, 6, 10, 44, 9, precision: :minute)
+    assert CarbonDate::Date.new(2000, precision: :year) >= CarbonDate::Date.new(1999, precision: :year)
+  end
+
+  def test_a_later_date_is_not_less_than_an_earlier_date
+    refute CarbonDate::Date.new(2000, precision: :year) <= CarbonDate::Date.new(1999, precision: :year)
   end
 
   # ==================== Conversions and other initializations ====================

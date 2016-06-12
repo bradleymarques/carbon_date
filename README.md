@@ -1,8 +1,22 @@
 # CarbonDate
 
-CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.
+CarbonDate is a Ruby gem that models (pre)historic dates with (im)precision.  Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar), and can have the following precision:
 
-Dates are modelled according to the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+0. billion_years
+1. hundred_million_years
+2. ten_million_years
+3. million_years
+4. hundred_thousand_years
+5. ten_thousand_years
+6. millennium
+7. century
+8. decade
+9. year
+10. month
+11. day
+12. hour
+13. minute
+14. second
 
 ## Installation
 
@@ -55,24 +69,6 @@ CarbonDate::Date.new(-4.6e9, precision: :hundred_million_years).to_s
 
 ```
 
-Available precisions:
-
-- `:second`
-- `:minute`
-- `:hour`
-- `:day`
-- `:month`
-- `:year`
-- `:decade`
-- `:century`
-- `:millennium`
-- `:ten_thousand_years`
-- `:hundred_thousand_years`
-- `:million_years`
-- `:ten_million_years`
-- `:hundred_million_years`
-- `:billion_years`
-
 ## Creation from ISO8601 Timestamp with precision
 
 CarbonDate also supports creation from the ISO8601, with precision, such as the format of dates used on [Wikidata](www.wikidata.org)
@@ -81,6 +77,20 @@ CarbonDate also supports creation from the ISO8601, with precision, such as the 
 CarbonDate::Date.iso8601('+0632-06-08T00:00:00Z', 11).to_s
 => "8th June, 632"
 ```
+
+## Conversion to Standard Ruby Objects
+
+`CarbonDate::Date` objects can be converted to standard Ruby `Date` and `DateTime` objects:
+
+```ruby
+CarbonDate::Date.new().to_date
+=> #<Date: 1970-01-01 ((2440588j,0s,0n),+0s,2299161j)>
+
+CarbonDate::Date.new().to_datetime
+=> #<DateTime: 1970-01-01T00:00:00+00:00 ((2440588j,0s,0n),+0s,2299161j)>
+```
+
+
 
 ## Custom Formatting
 

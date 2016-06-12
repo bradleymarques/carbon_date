@@ -180,7 +180,7 @@ module CarbonDate
     end
 
     def >=(another_date)
-      self.to_datetime <= another_date.to_datetime
+      self.to_datetime >= another_date.to_datetime
     end
 
   end
