@@ -1,5 +1,6 @@
 [![Gem Version](http://img.shields.io/gem/v/carbon_date.svg?style=flat-square)](https://rubygems.org/gems/carbon_date)
 [![Coverage Status](https://coveralls.io/repos/github/bradleymarques/carbon_date/badge.svg?branch=master)](https://coveralls.io/github/bradleymarques/carbon_date?branch=master)
+[![Inline docs](http://inch-ci.org/github/bradleymarques/carbon_date.svg?branch=master)](http://inch-ci.org/github/bradleymarques/carbon_date)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://bradleymarques.mit-license.org)
 
 # CarbonDate
