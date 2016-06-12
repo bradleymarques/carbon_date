@@ -114,18 +114,18 @@ module CarbonDate
     ##
     # Sets the minute with validation
     #
-    # Raises ArgumentError unless in the range (0..60)
+    # Raises ArgumentError unless in the range (0..59)
     def minute=(value)
-      raise ArgumentError.new "Invalid minute #{value}" unless (0..60).include? value
+      raise ArgumentError.new "Invalid minute #{value}" unless (0..59).include? value
       @minute = value
     end
 
     ##
     # Sets the second with validation
     #
-    # Raises ArgumentError unless in the range (0..60)
+    # Raises ArgumentError unless in the range (0..59)
     def second=(value)
-      raise ArgumentError.new "Invalid second #{value}" unless (0..60).include? value
+      raise ArgumentError.new "Invalid second #{value}" unless (0..59).include? value
       @second = value
     end
 

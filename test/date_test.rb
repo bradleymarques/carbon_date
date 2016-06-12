@@ -59,6 +59,79 @@ class DateTest < Minitest::Test
     assert_raises(ArgumentError) { CarbonDate::Date.new(2016, precision: invalid_precision) }
   end
 
+  # ==================== Setters ====================
+
+  def test_it_can_change_year
+    date = CarbonDate::Date.new(1944, precision: :year)
+    date.year = 2016
+    assert_equal 2016, date.year
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_year_to_invalid_year
+    date = CarbonDate::Date.new(1944, precision: :year)
+    assert_raises(ArgumentError) { date.year = 0 }
+  end
+
+  def test_it_can_change_month
+    date = CarbonDate::Date.new(1944, 7, precision: :month)
+    date.month = 6
+    assert_equal 6, date.month
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_month_to_invalid_month
+    date = CarbonDate::Date.new(1944, 7, precision: :month)
+    assert_raises(ArgumentError) { date.month = 13 }
+    assert_raises(ArgumentError) { date.month = 0 }
+  end
+
+  def test_it_can_change_day
+    date = CarbonDate::Date.new(1944, 7, 17, precision: :day)
+    date.day = 5
+    assert_equal 5, date.day
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_day_to_invalid_day
+    date = CarbonDate::Date.new(2016, 9, 30, precision: :day)
+    assert_raises(ArgumentError) { date.day = 31 }
+    assert_raises(ArgumentError) { date.day = 0 }
+  end
+
+  def test_it_can_change_hour
+    date = CarbonDate::Date.new(1988, 7, 11, 6, precision: :hour)
+    date.hour = 23
+    assert_equal 23, date.hour
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_hour_to_invalid_hour
+    date = CarbonDate::Date.new(2016, 9, 30, 7, precision: :hour)
+    assert_raises(ArgumentError) { date.hour = 24 }
+    assert_raises(ArgumentError) { date.hour = -1 }
+  end
+
+  def test_it_can_change_minute
+    date = CarbonDate::Date.new(1988, 7, 11, 6, 45, precision: :minute)
+    date.minute = 54
+    assert_equal 54, date.minute
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_minute_to_invalid_minute
+    date = CarbonDate::Date.new(2016, 9, 30, 7, 14, precision: :minute)
+    assert_raises(ArgumentError) { date.minute = 60 }
+    assert_raises(ArgumentError) { date.minute = -1 }
+  end
+
+  def test_it_can_change_second
+    date = CarbonDate::Date.new(1988, 7, 11, 6, 45, 4, precision: :second)
+    date.second = 13
+    assert_equal 13, date.second
+  end
+
+  def test_it_throws_an_error_if_trying_to_change_second_to_invalid_second
+    date = CarbonDate::Date.new(2016, 9, 30, 7, 14, 59, precision: :second)
+    assert_raises(ArgumentError) { date.second = 60 }
+    assert_raises(ArgumentError) { date.second = -1 }
+  end
+
   # ==================== Validations ====================
 
   def test_it_throws_an_error_if_invalid_month
