@@ -1,6 +1,3 @@
-[![Build Status](http://img.shields.io/travis/bradleymarques/carbon_date.svg?style=flat-square)](https://travis-ci.org/bradleymarques/carbon_date)
-[![Dependency Status](http://img.shields.io/gemnasium/bradleymarques/carbon_date.svg?style=flat-square)](https://gemnasium.com/bradleymarques/carbon_date)
-[![Code Climate](http://img.shields.io/codeclimate/github/bradleymarques/carbon_date.svg?style=flat-square)](https://codeclimate.com/github/bradleymarques/carbon_date)
 [![Gem Version](http://img.shields.io/gem/v/carbon_date.svg?style=flat-square)](https://rubygems.org/gems/carbon_date)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://bradleymarques.mit-license.org)
 
