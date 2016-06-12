@@ -107,7 +107,7 @@ class DateTest < Minitest::Test
   end
 
   def test_dates_with_same_attributes_but_different_precisions_are_unequal
-    assert_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
+    refute_equal CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :second), CarbonDate::Date.new(1914, 5, 6, 10, 44, 9, precision: :minute)
   end
 
   def test_an_earlier_date_is_less_than_a_later_date
