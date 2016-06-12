@@ -1,4 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/carbon_date.svg)](https://badge.fury.io/rb/carbon_date)
+badger badge
+[![Gem Version](http://img.shields.io/gem/v/carbon_date.svg)](https://rubygems.org/gems/carbon_date)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+
 
 # CarbonDate
 
