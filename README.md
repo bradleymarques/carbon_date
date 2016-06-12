@@ -90,6 +90,22 @@ CarbonDate::Date.new().to_datetime
 => #<DateTime: 1970-01-01T00:00:00+00:00 ((2440588j,0s,0n),+0s,2299161j)>
 ```
 
+They can also be compared using `==`, `<=` and `>=` operators:
+
+```ruby
+CarbonDate::Date.new(1970, 1, 1, 0, 0, 0, precision: :second) == CarbonDate::Date.new
+=> true
+
+CarbonDate::Date.new(1970, precision: :year) <= CarbonDate::Date.new(2016, precision: :year)
+=> true
+
+
+CarbonDate::Date.new(1970, precision: :year) >= CarbonDate::Date.new(2016, precision: :year)
+=> true
+
+CarbonDate::Date.new(1970, precision: :year) >= CarbonDate::Date.new(2016, precision: :year)
+=> false
+```
 
 
 ## Custom Formatting
@@ -98,18 +114,16 @@ If you don't like the way `to_s` formats the dates, create your own custom forma
 
 ```ruby
 class MyCustomFormatter < CarbonDate::Formatter
-
   def year(date)
     # ...
   end
-
   # ...
 end
 ```
 
-See `standard_formatter.rb` for an example.
+See `standard_formatter.rb` for an example of the functions that will require overriding.
 
-Then to set your custom formatter, simply do:
+Then, to use your custom formatter, simply do:
 ```ruby
 CarbonDate::Date.formatter = MyCustomFormatter.new
 # All subsequent dates will be formatted using your custom formatter
