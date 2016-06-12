@@ -4,7 +4,7 @@ include CarbonDate
 
 ##
 # Tests the to_s method of CarbonDate::Date with various precisions
-class StandardFromatterTest < Minitest::Test
+class StandardFormatterTest < Minitest::Test
 
   def setup
     CarbonDate::Date.formatter = CarbonDate::StandardFormatter.new
