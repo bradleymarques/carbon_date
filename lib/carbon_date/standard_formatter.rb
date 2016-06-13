@@ -12,8 +12,6 @@ module CarbonDate
     # Collection of strings denoting month names for this Formatter
     MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-    private
-
     # Formats a CarbonDate::Date with year precision as a string
     # Returns:
     # A human-readable string representing the Date
