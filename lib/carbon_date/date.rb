@@ -86,12 +86,11 @@ module CarbonDate
     # An atomic function to set the date component (year, month and day)
     # Raises +ArgumentError+ if invalid date
     def set_date(year, month, day)
-      raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}") unless (1..12).include? month
-      raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}") if (year.nil? || year == 0)
+      raise invalid_date if (year.nil? || year == 0 || !((1..12).include? month))
       begin
         ::Date.new(year, month, day)
       rescue ArgumentError
-        raise ArgumentError.new("Invalid date #{year}-#{month}-#{day}")
+        raise invalid_date
       end
       @year = year.to_i
       @month = month
@@ -204,6 +203,10 @@ module CarbonDate
     # Defers to DateTime#>=
     def >=(another_date)
       self.to_datetime >= another_date.to_datetime
+    end
+
+    def invalid_date
+      ArgumentError.new("Invalid date #{year}-#{month}-#{day}")
     end
 
   end

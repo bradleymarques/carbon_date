@@ -130,7 +130,6 @@ module CarbonDate
     end
 
     # A helper function used to format dates that have less than millenium precision
-    #
     # Params:
     # +date_year+ The year component of the CarbonDate::Date being formatted
     # +interval+ The precision in years
