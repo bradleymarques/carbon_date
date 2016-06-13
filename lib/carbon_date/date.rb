@@ -18,46 +18,38 @@ module CarbonDate
 
     ##
     # The precisions available
-    #
-    # TODO: Consider refactoring into a simple array of symbols, since level could be replaced by the index in the array
-    PRECISION = [
-      {symbol: :second, level: 14},
-      {symbol: :minute, level: 13},
-      {symbol: :hour, level: 12},
-      {symbol: :day, level: 11},
-      {symbol: :month, level: 10},
-      {symbol: :year, level: 9,},
-      {symbol: :decade, level: 8,},
-      {symbol: :century, level: 7,},
-      {symbol: :millennium, level: 6,},
-      {symbol: :ten_thousand_years, level: 5,},
-      {symbol: :hundred_thousand_years, level: 4},
-      {symbol: :million_years, level: 3},
-      {symbol: :ten_million_years, level: 2},
-      {symbol: :hundred_million_years, level: 1},
-      {symbol: :billion_years, level: 0}
+    PRECISION =
+    [
+      :billion_years,
+      :hundred_million_years,
+      :ten_million_years,
+      :million_years,
+      :hundred_thousand_years,
+      :ten_thousand_years,
+      :millennium,
+      :century,
+      :decade,
+      :year,
+      :month,
+      :day,
+      :hour,
+      :minute,
+      :second
     ]
 
     # The date's precision
-
     attr_reader :precision
     # The date's year. Cannot be 0 as there is no 0 year in the Gregorian Calendar.
-
     attr_reader :year
-    # The date's month
-
+    # The date's month in range (1..12)
     attr_reader :month
-    # The date's day
-
+    # The date's day counting from 1
     attr_reader :day
-    # The date's hour
-
+    # The date's hour in range (0..23)
     attr_reader :hour
-    # The date's minute
-
+    # The date's minute in range (0..59)
     attr_reader :minute
-    # The date's second
-
+    # The date's second in range (0..59)
     attr_reader :second
 
     # Creates a new CarbonDate::Date
@@ -87,9 +79,8 @@ module CarbonDate
     # Sets the precision
     # Raises +ArgumentError+ if invalid symbol
     def precision=(value)
-      p = PRECISION.find { |x| x[:symbol] == value }
-      raise ArgumentError.new "Invalid precision #{value}" unless p
-      @precision = p
+      raise ArgumentError.new "Invalid precision #{value}" unless PRECISION.include? value
+      @precision = value
     end
 
     # An atomic function to set the date component (year, month and day)
@@ -155,7 +146,7 @@ module CarbonDate
     # Returns:
     # +CarbonDate::Date+ object
     def self.iso8601(string, precision_level)
-      p = PRECISION.find { |x| x[:level] == precision_level}
+      p = PRECISION[precision_level]
       raise ArgumentError.new("Invalid precision level #{precision_level}") unless p
       # If there is an initial '-' symbol on the year, it needs to be treateded differenty than the other '-'.
       # Example: -0500-01-01 is the 1st January 500 BCE
@@ -167,7 +158,7 @@ module CarbonDate
       end
       d = string.split('T').map { |x| x.split(/[-:]/) }.flatten.map(&:to_i)
       year = bce ? -d[0] : d[0]
-      CarbonDate::Date.new(year, d[1], d[2], d[3], d[4], d[5], precision: p[:symbol])
+      CarbonDate::Date.new(year, d[1], d[2], d[3], d[4], d[5], precision: p)
     end
 
     # Prints a human-readable version of the date, using CarbonDate::Date.formatter

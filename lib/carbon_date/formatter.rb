@@ -36,7 +36,7 @@ module CarbonDate
     ##
     # Formats a CarbonDate::Date object as a human-readable string
     def date_to_string(date)
-      precision = date.precision.fetch(:symbol, nil)
+      precision = date.precision
       case precision
       when :billion_years then billion_years(date)
       when :hundred_million_years then hundred_million_years(date)
